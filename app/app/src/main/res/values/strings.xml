@@ -5,4 +5,5 @@
     <string name="logo_description">Logo</string>
     <string name="aeroport_titre1">Aeroport 1</string>
     <string name="code_aeroport1">KJFK</string>
+    <string name="ajoutAerop">Ajouter un nouvel aéroport</string>
 </resources>
