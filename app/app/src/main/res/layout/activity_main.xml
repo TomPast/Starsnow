@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/icone_supp1"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -73,8 +73,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
-                android:clickable="true"
-                app:srcCompat="@drawable/poubelle" />
+                android:background="@drawable/poubelle" />
 
             <ImageView
                 android:id="@+id/icone_avion1"
@@ -125,7 +124,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:cardBackgroundColor="#0044AB"
         app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,7 +137,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/icone_supp2"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -147,8 +146,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
-                android:clickable="true"
-                app:srcCompat="@drawable/poubelle" />
+                android:background="@drawable/poubelle" />
 
             <ImageView
                 android:id="@+id/icone_avion2"
@@ -199,7 +197,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:cardBackgroundColor="#349BFB"
         app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +210,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/icone_supp3"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -221,8 +219,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
-                android:clickable="true"
-                app:srcCompat="@drawable/poubelle" />
+                android:background="@drawable/poubelle" />
 
             <ImageView
                 android:id="@+id/icone_avion3"
@@ -273,7 +270,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:cardBackgroundColor="#72BCFF"
         app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -286,7 +283,8 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <ImageView
+
+            <ImageButton
                 android:id="@+id/icone_supp4"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -295,8 +293,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
-                android:clickable="true"
-                app:srcCompat="@drawable/poubelle" />
+                android:background="@drawable/poubelle" />
 
             <ImageView
                 android:id="@+id/icone_avion4"
@@ -349,5 +346,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_aerop4" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
