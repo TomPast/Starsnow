@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/section_label"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/lato"
+        android:text="SWBG0037 BGUK 10121300 \n(SNOWTAM 0037 \nA) BGUK \nB) 10121300\n C) 05 F) 7/7/7 G) 1/1/1 H) 5/5/5 \nN) 7/GOOD \nR) 7/POOR \nT) RWY CONTAMINATION 50 PERCENT 1MM ICE  - MEASURED FRICTION COEFFICIENT 71/69/74 TAP )"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+</RelativeLayout>

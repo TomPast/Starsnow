@@ -1,3 +1,5 @@
+package standardclasses;
+
 import java.util.HashMap;
 
 public class Snowtam {

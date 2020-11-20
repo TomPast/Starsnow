@@ -10,6 +10,7 @@
             android:centerColor="@android:color/transparent"
             android:endColor="@android:color/transparent"
             android:centerY="0.5"
+            android:angle="-90"
             />
     </shape></item>
 
@@ -19,6 +20,7 @@
             android:centerColor="#002150"
             android:endColor="@android:color/transparent"
             android:centerY="0.4"
+            android:angle="-90"
             />
     </shape></item>
 
@@ -28,6 +30,7 @@
             android:centerColor="#002150"
             android:endColor="@android:color/transparent"
             android:centerY="0.7"
+            android:angle="-90"
             />
     </shape></item>
 
@@ -36,6 +39,7 @@
             android:startColor="@android:color/transparent"
             android:centerColor="#002150"
             android:endColor="#002150"
+            android:angle="-90"
             />
     </shape></item>
 </layer-list>
