@@ -11,5 +11,30 @@
         android:name="com.example.starsnow.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-         />
+        tools:layout_editor_absoluteX="-61dp"
+        tools:layout_editor_absoluteY="-249dp" />
+
+    <Button
+        android:id="@+id/imageButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/norm"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_map"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_map" />
+
+    <ImageButton
+        android:id="@+id/returnButton"
+        android:layout_width="62dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="backFunction"
+        android:src="@drawable/abc_vector_test"
+        android:tint="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/fragment_map"
+        app:layout_constraintTop_toTopOf="@+id/fragment_map" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
