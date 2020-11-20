@@ -3,4 +3,6 @@
     <string name="instructions">Saisissez les codes IACO</string>
     <string name="btn_valider">Rechercher</string>
     <string name="logo_description">Logo</string>
+    <string name="aeroport_titre1">Aeroport 1</string>
+    <string name="code_aeroport1">KJFK</string>
 </resources>
