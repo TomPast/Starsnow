@@ -48,21 +48,25 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener handlerSuppr1 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop1.setVisibility(View.GONE);
+            affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr2 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop2.setVisibility(View.GONE);
+            affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr3 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop3.setVisibility(View.GONE);
+            affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr4 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop4.setVisibility(View.GONE);
+            affichageAjoutAerop();
         }
     };
 
@@ -87,13 +91,19 @@ public class MainActivity extends AppCompatActivity {
                             //affiche popup
                         }
                     }
-
                 }
             }
-            if((cardAerop1.getVisibility() == View.VISIBLE) && (cardAerop2.getVisibility() == View.VISIBLE) && (cardAerop3.getVisibility() == View.VISIBLE) && (cardAerop4.getVisibility() == View.VISIBLE)){
-                ajoutAerop.setVisibility(View.GONE);
-            }
+            affichageAjoutAerop();
         }
 
     };
+
+    private void affichageAjoutAerop(){
+        if((cardAerop1.getVisibility() == View.VISIBLE) && (cardAerop2.getVisibility() == View.VISIBLE) && (cardAerop3.getVisibility() == View.VISIBLE) && (cardAerop4.getVisibility() == View.VISIBLE)){
+            ajoutAerop.setVisibility(View.GONE);
+        }
+        else {
+            ajoutAerop.setVisibility(View.VISIBLE);
+        }
+    }
 }
