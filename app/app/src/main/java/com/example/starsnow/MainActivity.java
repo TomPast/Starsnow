@@ -1,14 +1,19 @@
 package com.example.starsnow;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,23 +77,17 @@ public class MainActivity extends AppCompatActivity {
 
     View.OnClickListener handlerAjout = new View.OnClickListener() {
         public void onClick(View v) {
-            if(cardAerop1.getVisibility() == View.GONE){
+            if (cardAerop1.getVisibility() == View.GONE) {
                 cardAerop1.setVisibility(View.VISIBLE);
-            }
-            else {
-                if(cardAerop2.getVisibility() == View.GONE){
+            } else {
+                if (cardAerop2.getVisibility() == View.GONE) {
                     cardAerop2.setVisibility(View.VISIBLE);
-                }
-                else {
-                    if(cardAerop3.getVisibility() == View.GONE){
+                } else {
+                    if (cardAerop3.getVisibility() == View.GONE) {
                         cardAerop3.setVisibility(View.VISIBLE);
-                    }
-                    else{
-                        if(cardAerop4.getVisibility() == View.GONE){
+                    } else {
+                        if (cardAerop4.getVisibility() == View.GONE) {
                             cardAerop4.setVisibility(View.VISIBLE);
-                        }
-                        else{
-                            //affiche popup
                         }
                     }
                 }
@@ -97,13 +96,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
-
-    private void affichageAjoutAerop(){
-        if((cardAerop1.getVisibility() == View.VISIBLE) && (cardAerop2.getVisibility() == View.VISIBLE) && (cardAerop3.getVisibility() == View.VISIBLE) && (cardAerop4.getVisibility() == View.VISIBLE)){
+    private void affichageAjoutAerop() {
+        if ((cardAerop1.getVisibility() == View.VISIBLE) && (cardAerop2.getVisibility() == View.VISIBLE) && (cardAerop3.getVisibility() == View.VISIBLE) && (cardAerop4.getVisibility() == View.VISIBLE)) {
             ajoutAerop.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             ajoutAerop.setVisibility(View.VISIBLE);
         }
     }
+
 }
