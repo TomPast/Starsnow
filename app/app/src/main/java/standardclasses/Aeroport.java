@@ -8,7 +8,9 @@ import com.example.starsnow.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Aeroport {
+import java.io.Serializable;
+
+public class Aeroport implements Serializable {
     private String OACI;
     private String nom;
     private Snowtam snowtam;

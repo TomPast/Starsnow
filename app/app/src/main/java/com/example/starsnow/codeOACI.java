@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONException;
@@ -38,6 +40,8 @@ public class codeOACI extends AppCompatActivity {
     private TextView AeroportName;
     private TextView Longitude;
     private TextView Latitude;
+
+    private Aeroport currentAeroport;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,17 +56,10 @@ public class codeOACI extends AppCompatActivity {
 
 
 
+
         IACO_APIService API = new IACO_APIService(this.getApplicationContext());
-        //RECUPERATION D'UN TABLEAU DE 4 STRINGS (4 code OACI) depuis intent
-        //String[] aeroportNames = {"BIKF","BIKF","BIKF","BIKF"};
 
-
-        //Remplissage d'un tableau de 4 aéroports
-            //Remplissage des infos d'aéroport (nom, longitude, latitude) + SNOWTAM (codé, décodé)
-        //Lien avec la vue, voir comment faire (fragment ??)
-
-
-        API.getSnowtam("ENGM", new VolleyCallback() {
+        API.getSnowtam("ENBO", new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 System.out.println(result);
@@ -71,9 +68,10 @@ public class codeOACI extends AppCompatActivity {
             }
         });
 
-        API.getAeroport("ENGM", new VolleyCallback2() {
+        API.getAeroport("ENBO", new VolleyCallback2() {
             @Override
             public void onSuccess(Aeroport results) {
+                currentAeroport = results;
                 System.out.println(results.getNom());
                 AeroportName = (TextView) findViewById(R.id.aeroportName);
                 AeroportName.setText(results.getNom());
@@ -86,11 +84,17 @@ public class codeOACI extends AppCompatActivity {
             }
         });
 
+        currentAeroport = new Aeroport("OKIE", "Charles de gaulles", 11.08388888888888, 60.2027777777777);
 
-        System.out.println("FIN APPEL");
-
-        //System.out.println(aeroportList[0]);
-
+        FloatingActionButton floatingButtonLocalisation = (FloatingActionButton) findViewById(R.id.floatingButtonLocalisation);
+        floatingButtonLocalisation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent localisation = new Intent(codeOACI.this, MapActivity.class);
+                localisation.putExtra("aeroport",currentAeroport);
+                startActivityForResult(localisation, 500);
+            }
+        });
     }
 
 
