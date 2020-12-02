@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity{
     private ConstraintLayout ajoutCode;
     private TextView code_aeroport1, code_aeroport2, code_aeroport3, code_aeroport4;
     private EditText otp_textbox1, otp_textbox2, otp_textbox3, otp_textbox4;
+    private String[] codes;
 
 
     @Override
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        codes = new String[4];
 
         // Recupere l'id des elements graphiques
         cardAerop1 = findViewById(R.id.card_aerop1);
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity{
         suppr4.setOnClickListener(handlerSuppr4);
         ajoutAerop.setOnClickListener(handlerAjout);
         rechercherCode.setOnClickListener(handlerRecherche);
+        btn_valider.setOnClickListener(handlerValider);
 
         EditText[] edit = {otp_textbox1, otp_textbox2, otp_textbox3, otp_textbox4};
 
@@ -123,18 +126,22 @@ public class MainActivity extends AppCompatActivity{
             String codeOACI = lettre1+lettre2+lettre3+lettre4;
             if (cardAerop1.getVisibility() == View.GONE) {
                 code_aeroport1.setText(codeOACI.toUpperCase());
+                codes[0] = codeOACI;
                 cardAerop1.setVisibility(View.VISIBLE);
             } else {
                 if (cardAerop2.getVisibility() == View.GONE) {
                     code_aeroport2.setText(codeOACI.toUpperCase());
+                    codes[1] = codeOACI;
                     cardAerop2.setVisibility(View.VISIBLE);
                 } else {
                     if (cardAerop3.getVisibility() == View.GONE) {
                         code_aeroport3.setText(codeOACI.toUpperCase());
+                        codes[2] = codeOACI;
                         cardAerop3.setVisibility(View.VISIBLE);
                     } else {
                         if (cardAerop4.getVisibility() == View.GONE) {
                             code_aeroport4.setText(codeOACI.toUpperCase());
+                            codes[3] = codeOACI;
                             cardAerop4.setVisibility(View.VISIBLE);
                         }
                     }
@@ -167,4 +174,16 @@ public class MainActivity extends AppCompatActivity{
             ajoutAerop.setVisibility(View.VISIBLE);
         }
     }
+
+    /**
+     * Ouvre la zone de recherche d'aeroport
+     */
+    View.OnClickListener handlerValider = new View.OnClickListener() {
+        public void onClick(View v) {
+            Log.d("MSG",codes[0]);
+            Intent codeOACI = new Intent(MainActivity.this, codeOACI.class);
+            codeOACI.putExtra("codes",codes);
+            startActivity(codeOACI);
+        }
+    };
 }
