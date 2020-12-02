@@ -9,21 +9,21 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Starsnow">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAk-ZlvVXawi7j2OqIdB-5PhfbqfzFCQiI"/>
-        <activity android:name=".codeOACI">
+        <activity android:name=".Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".codeOACI"></activity>
         <activity android:name=".MapActivity"></activity>
         <activity android:name=".MainActivity"></activity>
 
