@@ -13,6 +13,7 @@ public class Snowtam {
 
     public Snowtam(String codeOACI, String plainCodedSnowtam){
         this.setOACI(OACI);
+        this.setPlainCodedSnowtam(plainCodedSnowtam);
     }
 
     public String getOACI() {

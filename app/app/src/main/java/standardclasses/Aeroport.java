@@ -1,5 +1,13 @@
 package standardclasses;
 
+import android.util.Log;
+import android.widget.TextView;
+
+import com.example.starsnow.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Aeroport {
     private String OACI;
     private String nom;
@@ -9,6 +17,19 @@ public class Aeroport {
 
     public Aeroport(String OACI) {
         this.setOACI(OACI);
+        this.setSnowtam(new Snowtam(OACI));
+    }
+
+    public Aeroport(String OACI, String plainCodedSnowtam) {
+        this.setOACI(OACI);
+        this.setSnowtam(new Snowtam(OACI, plainCodedSnowtam));
+    }
+
+    public Aeroport(String OACI, String aeroportName, double latitude, double longitude) {
+        this.setOACI(OACI);
+        this.setNom(aeroportName);
+        this.setLatitude(latitude);
+        this.setLongitude(longitude);
     }
 
     public String getOACI() {
