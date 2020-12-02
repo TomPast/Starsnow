@@ -24,7 +24,6 @@ public class TestActivity extends AppCompatActivity {
         otp_textbox_four = findViewById(R.id.otp_edit_box4);
         verify_otp = findViewById(R.id.verify_otp_btn);
 
-
         EditText[] edit = {otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four};
 
         otp_textbox_one.addTextChangedListener(new GenericTextWatcher(otp_textbox_one, edit));
