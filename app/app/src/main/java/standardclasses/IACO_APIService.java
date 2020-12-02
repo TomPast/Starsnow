@@ -21,6 +21,7 @@ import java.text.DecimalFormat;
 public class IACO_APIService extends Application {
     public Context c;
     public RequestQueue queue;
+    public String API_KEY = "73debc00-347f-11eb-8d2d-2fd17a4e11e2";
 
     public IACO_APIService(Context c){
         this.c = c;
@@ -28,7 +29,8 @@ public class IACO_APIService extends Application {
     }
 
     public void getSnowtam(String OACI, final VolleyCallback callback){
-        String url = "https://applications.icao.int/dataservices/api/notams-realtime-list?api_key=456d46f0-3328-11eb-8a49-b3429d06c9bf&format=json&criticality=1&locations="+OACI;
+
+        String url = "https://applications.icao.int/dataservices/api/notams-realtime-list?api_key="+API_KEY+"&format=json&criticality=1&locations="+OACI;
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -66,7 +68,7 @@ public class IACO_APIService extends Application {
 
 
     public void getAeroport(String OACI, final VolleyCallback2 callback){
-        String url = "https://applications.icao.int/dataservices/api/indicators-list?api_key=456d46f0-3328-11eb-8a49-b3429d06c9bf&state=&airports="+OACI+"&format=json";
+        String url = "https://applications.icao.int/dataservices/api/indicators-list?api_key="+API_KEY+"&state=&airports="+OACI+"&format=json";
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
