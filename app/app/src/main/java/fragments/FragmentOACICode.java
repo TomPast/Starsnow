@@ -20,7 +20,7 @@ public class FragmentOACICode extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_oaci_code, container, false);
         TextView txt = (TextView) view.findViewById(R.id.section_label);
-        txt.setText("hello2");
+        txt.setText("Chargement du snowtam...");
         return view;
     }
 }
