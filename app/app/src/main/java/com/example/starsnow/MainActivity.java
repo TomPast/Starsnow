@@ -20,22 +20,29 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import standardclasses.Aeroport;
+import standardclasses.IACO_APIService;
+import standardclasses.VolleyCallback;
+import standardclasses.VolleyCallback2;
+
 public class MainActivity extends AppCompatActivity{
 
     private CardView cardAerop1, cardAerop2, cardAerop3, cardAerop4;
     private Button ajoutAerop, btn_valider, rechercherCode;
     private ImageButton suppr1, suppr2, suppr3, suppr4;
     private ConstraintLayout ajoutCode;
-    private TextView code_aeroport1, code_aeroport2, code_aeroport3, code_aeroport4;
+    private TextView code_aeroport1, code_aeroport2, code_aeroport3, code_aeroport4, aeroport_titre1, aeroport_titre2, aeroport_titre3, aeroport_titre4;
     private EditText otp_textbox1, otp_textbox2, otp_textbox3, otp_textbox4;
     private String[] codes;
-
+    private IACO_APIService API;
+    private String nomAerop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Init liste des codes qui sera envoyé dans la prochaine activité
         codes = new String[4];
 
         // Recupere l'id des elements graphiques
@@ -56,6 +63,12 @@ public class MainActivity extends AppCompatActivity{
         code_aeroport2 = findViewById(R.id.code_aeroport2);
         code_aeroport3 = findViewById(R.id.code_aeroport3);
         code_aeroport4 = findViewById(R.id.code_aeroport4);
+
+        aeroport_titre1 = findViewById(R.id.aeroport_titre1);
+        aeroport_titre2= findViewById(R.id.aeroport_titre2);
+        aeroport_titre3= findViewById(R.id.aeroport_titre3);
+        aeroport_titre4= findViewById(R.id.aeroport_titre4);
+
         otp_textbox1 = findViewById(R.id.otp_edit_box1);
         otp_textbox2 = findViewById(R.id.otp_edit_box2);
         otp_textbox3 = findViewById(R.id.otp_edit_box3);
@@ -84,6 +97,8 @@ public class MainActivity extends AppCompatActivity{
         otp_textbox3.addTextChangedListener(new GenericTextWatcher(otp_textbox3, edit));
         otp_textbox4.addTextChangedListener(new GenericTextWatcher(otp_textbox4, edit));
 
+        API = new IACO_APIService(this.getApplicationContext());
+
     }
 
     /**
@@ -92,30 +107,36 @@ public class MainActivity extends AppCompatActivity{
     View.OnClickListener handlerSuppr1 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop1.setVisibility(View.GONE);
+            codes[0] = null;
             affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr2 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop2.setVisibility(View.GONE);
+            codes[1] = null;
             affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr3 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop3.setVisibility(View.GONE);
+            codes[2] = null;
             affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr4 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop4.setVisibility(View.GONE);
+            codes[3] = null;
             affichageAjoutAerop();
         }
     };
 
     /**
-     * Recherche le code et ajoute la bonne card
+     * Appel de l'api pour chercher le nom de l'aéroort
+     * Si code valide affiche une card avec le nom de l'aéroport
+     * Sinon popup erreur
      */
     View.OnClickListener handlerRecherche = new View.OnClickListener() {
         public void onClick(View v) {
@@ -124,30 +145,47 @@ public class MainActivity extends AppCompatActivity{
             String lettre3 = otp_textbox3.getText().toString();
             String lettre4 = otp_textbox4.getText().toString();
             String codeOACI = lettre1+lettre2+lettre3+lettre4;
-            if (cardAerop1.getVisibility() == View.GONE) {
-                code_aeroport1.setText(codeOACI.toUpperCase());
-                codes[0] = codeOACI;
-                cardAerop1.setVisibility(View.VISIBLE);
-            } else {
-                if (cardAerop2.getVisibility() == View.GONE) {
-                    code_aeroport2.setText(codeOACI.toUpperCase());
-                    codes[1] = codeOACI;
-                    cardAerop2.setVisibility(View.VISIBLE);
-                } else {
-                    if (cardAerop3.getVisibility() == View.GONE) {
-                        code_aeroport3.setText(codeOACI.toUpperCase());
-                        codes[2] = codeOACI;
-                        cardAerop3.setVisibility(View.VISIBLE);
+
+            API.getAeroport(codeOACI, new VolleyCallback2() {
+                @Override
+                public void onSuccess(Aeroport results) {
+                    Log.d("APPELAPI","API SUCCESS result = "+results);
+                    nomAerop = results.getNom();
+                    if (cardAerop1.getVisibility() == View.GONE) {
+                        code_aeroport1.setText(codeOACI.toUpperCase());
+                        codes[0] = codeOACI;
+                        aeroport_titre1.setText(nomAerop);
+                        cardAerop1.setVisibility(View.VISIBLE);
                     } else {
-                        if (cardAerop4.getVisibility() == View.GONE) {
-                            code_aeroport4.setText(codeOACI.toUpperCase());
-                            codes[3] = codeOACI;
-                            cardAerop4.setVisibility(View.VISIBLE);
+                        if (cardAerop2.getVisibility() == View.GONE) {
+                            code_aeroport2.setText(codeOACI.toUpperCase());
+                            codes[1] = codeOACI;
+                            aeroport_titre2.setText(nomAerop);
+                            cardAerop2.setVisibility(View.VISIBLE);
+                        } else {
+                            if (cardAerop3.getVisibility() == View.GONE) {
+                                code_aeroport3.setText(codeOACI.toUpperCase());
+                                codes[2] = codeOACI;
+                                aeroport_titre3.setText(nomAerop);
+                                cardAerop3.setVisibility(View.VISIBLE);
+                            } else {
+                                if (cardAerop4.getVisibility() == View.GONE) {
+                                    code_aeroport4.setText(codeOACI.toUpperCase());
+                                    codes[3] = codeOACI;
+                                    aeroport_titre4.setText(nomAerop);
+                                    cardAerop4.setVisibility(View.VISIBLE);
+
+                                }
+                            }
                         }
                     }
+                    affichageAjoutAerop();
                 }
-            }
-            affichageAjoutAerop();
+                public void onError(String error){
+                    Log.d("APPELAPI","API ONERROR result = "+error);
+                    popUp("Code non valide");
+                }
+            });
             ajoutCode.setVisibility(View.GONE);
             btn_valider.setVisibility(View.VISIBLE);
         }
@@ -160,7 +198,7 @@ public class MainActivity extends AppCompatActivity{
         public void onClick(View v) {
             ajoutCode.setVisibility(View.VISIBLE);
             btn_valider.setVisibility(View.GONE);
-            ajoutAerop.setVisibility(View.GONE);
+            //cardAerop3.setVisibility(View.GONE);
         }
     };
 
@@ -176,7 +214,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     /**
-     * Ouvre la zone de recherche d'aeroport
+     * Changement d'activité
      */
     View.OnClickListener handlerValider = new View.OnClickListener() {
         public void onClick(View v) {
@@ -186,4 +224,14 @@ public class MainActivity extends AppCompatActivity{
             startActivity(codeOACI);
         }
     };
+
+    /**
+     * Affiche erreur
+     * @param message
+     */
+    public void popUp(String message) {
+        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
 }

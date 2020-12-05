@@ -15,13 +15,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 
 public class IACO_APIService extends Application {
     public Context c;
     public RequestQueue queue;
-    public String API_KEY = "73debc00-347f-11eb-8d2d-2fd17a4e11e2";
+    public String API_KEY = "737c6d60-34a3-11eb-9b4d-754e522c3669";
 
     public IACO_APIService(Context c){
         this.c = c;
@@ -74,20 +73,27 @@ public class IACO_APIService extends Application {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            System.out.println(response);
-                            JSONArray responseJSON = new JSONArray(response);
-                            JSONObject aeroportEntry = responseJSON.getJSONObject(0);
-                            String aeroportName = aeroportEntry.getString("airportName");
-                            JSONArray coordinates = aeroportEntry.getJSONObject("geometry").getJSONArray("coordinates");
-                            DecimalFormat df = new DecimalFormat("0.000000");
-                            double latitude = (double) coordinates.get(0);
-                            double longitude = (double) coordinates.get(1);
-                            System.out.println(OACI+" "+aeroportName+" |"+latitude+"/"+longitude);
-                            callback.onSuccess(new Aeroport(OACI, aeroportName,latitude,longitude));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        Log.d("APPELAPI","IACO APISERVICE ONREPONSE RESPONSE"+response.length());
+                        if(response.length() > 2){
+                            try {
+                                //System.out.println(response);
+                                JSONArray responseJSON = new JSONArray(response);
+                                JSONObject aeroportEntry = responseJSON.getJSONObject(0);
+                                String aeroportName = aeroportEntry.getString("airportName");
+                                JSONArray coordinates = aeroportEntry.getJSONObject("geometry").getJSONArray("coordinates");
+                                DecimalFormat df = new DecimalFormat("0.000000");
+                                double latitude = (double) coordinates.get(0);
+                                double longitude = (double) coordinates.get(1);
+                                //System.out.println(OACI+" "+aeroportName+" |"+latitude+"/"+longitude);
+                                callback.onSuccess(new Aeroport(OACI, aeroportName,latitude,longitude));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
+                        else {
+                            callback.onError("CODE OACI NON VALIDE");
+                        }
+
                     }
                 }, new Response.ErrorListener() {
             @Override

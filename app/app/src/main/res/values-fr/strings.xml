@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Starsnow</string>
+    <string name="instructions">Saisissez les codes OACI</string>
+    <string name="btn_valider">Valider</string>
+    <string name="logo_description">Logo</string>
+    <string name="aeroport_titre1">Aeroport 1</string>
+    <string name="code_aeroport1">KJFK</string>
+    <string name="ajoutAerop">Ajouter un nouvel aéroport</string>
+    <string name="titre_ajout">Nouvel Aéroport</string>
+    <string name="soustitre_ajout">Code OACI</string>
+    <string name="satellite">Satellite</string>
+    <string name="normal">Normal</string>
+    <string name="hybride">Hybride</string>
+    <string name="rechercherCode">RECHERCHER</string>
+    <string name="msg_splashscreen">Vous souhaite la bienvenue à bord</string>
+</resources>

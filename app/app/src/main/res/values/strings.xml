@@ -1,17 +1,16 @@
 <resources>
     <string name="app_name">Starsnow</string>
-    <string name="instructions">Saisissez les codes IACO</string>
-    <string name="btn_valider">Rechercher</string>
+    <string name="instructions">Enter ICAO codes</string>
+    <string name="btn_valider">Validate</string>
     <string name="logo_description">Logo</string>
-    <string name="aeroport_titre1">Aeroport 1</string>
+    <string name="aeroport_titre1">Airport 1</string>
     <string name="code_aeroport1">KJFK</string>
-    <string name="ajoutAerop">Ajouter un nouvel aéroport</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="titre_ajout">Nouvel Aéroport</string>
-    <string name="soustitre_ajout">Code IACO</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ajoutAerop">Add new airport</string>
+    <string name="titre_ajout">New Airport</string>
+    <string name="soustitre_ajout">ICAO Code</string>
     <string name="satellite">Satellite</string>
     <string name="normal">Normal</string>
     <string name="hybride">Hybride</string>
+    <string name="rechercherCode">Search</string>
+    <string name="msg_splashscreen">Welcome you on board</string>
 </resources>
