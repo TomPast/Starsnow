@@ -1,35 +1,23 @@
 package com.example.starsnow;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import Adapter.ViewPagerAdapter;
-import fragments.FragmentOACICode;
-import fragments.FragmentOACIDecode;
 import standardclasses.Aeroport;
 import standardclasses.IACO_APIService;
-import standardclasses.Snowtam;
 import standardclasses.VolleyCallback;
 import standardclasses.VolleyCallback2;
 
@@ -37,9 +25,13 @@ public class codeOACI extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private TextView FragmentOne;
+    private TextView FragmentTwoA;
+    private TextView FragmentTwoB;
+    private TextView FragmentTwoC;
     private TextView AeroportName;
     private TextView Longitude;
     private TextView Latitude;
+    //private String[] snowtamSplit;
 
     private Aeroport currentAeroport;
     @Override
@@ -54,17 +46,105 @@ public class codeOACI extends AppCompatActivity {
         tabLayout.post(() -> tabLayout.setupWithViewPager(viewPager));
 
 
-
-
-
         IACO_APIService API = new IACO_APIService(this.getApplicationContext());
 
-        API.getSnowtam("ENBO", new VolleyCallback() {
+        API.getSnowtam("BIAR", new VolleyCallback() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess(String result) {
+               //Partie codé
                 System.out.println(result);
                 FragmentOne = (TextView) findViewById(R.id.section_label);
                 FragmentOne.setText(result);
+
+                //Partie décodé
+                FragmentTwoA = (TextView) findViewById(R.id.textView_decodeA);
+                FragmentTwoB = (TextView) findViewById(R.id.textView_decodeB);
+                FragmentTwoC = (TextView) findViewById(R.id.textView_decodeC);
+
+
+
+                /*String[] snowtamAdjustment = result.split("");
+
+                ArrayList<String> monTableau = new ArrayList<String>();
+                for (String s : snowtamAdjustment) {
+                    if (s.equals("\n")) {
+                        s.replaceAll("[\\t\\n\\r]+"," ");
+                        monTableau.add(s);
+                    } else {
+                        monTableau.add(s);
+                    }
+                }
+
+                for(int i=1; i<monTableau.size(); i++){
+                    System.out.println("Position "+ i +" : " + monTableau.get(i));
+                }
+
+                String str, str2 ="";
+                for(int i=1; i<monTableau.size(); i++){
+                    if(i==1){
+                        str = monTableau.get(i-1);
+                        str2 = str.concat(monTableau.get(i));
+                    }
+                    else{
+                        str2 = str2.concat(monTableau.get(i));
+                    }
+                }
+
+                System.out.println("ici la chaine : " +str2);*/
+
+                //FragmentTwo.setText(result);
+                String s = result.replaceAll("\n", " ");
+                System.out.println("Résultat : " + s);
+
+                String[] snowtamSplit = s.split(" ");
+
+                ArrayList<String> monTableau2 = new ArrayList<>();
+                Collections.addAll(monTableau2, snowtamSplit);
+
+                for(int i=0; i<monTableau2.size(); i++){
+                    if (monTableau2.get(i).contains("A)") || monTableau2.get(i).contains("B)") || monTableau2.get(i).contains("C)") || monTableau2.get(i).contains("D)") || monTableau2.get(i).contains("F)")
+                            || monTableau2.get(i).contains("G)") || monTableau2.get(i).equals("H)") || monTableau2.get(i).contains("J)") || monTableau2.get(i).contains("K)") || monTableau2.get(i).contains("L)")
+                            || monTableau2.get(i).contains("M)") || monTableau2.get(i).contains("N)") || monTableau2.get(i).contains("P)")|| monTableau2.get(i).contains("R)") || monTableau2.get(i).contains("S)")
+                            || monTableau2.get(i).contains("T)")) {
+
+                        monTableau2.add(i,"\\\n");
+                        i++;
+                    }
+                }
+
+                for (int i=0; i<monTableau2.size(); i++){
+                    String lettre = monTableau2.get(i);
+                    switch(lettre){
+                        case "A)" :
+                            FragmentTwoA.setText(monTableau2.get(i+1));
+                            break;
+
+                        case "B)" :
+                            FragmentTwoB.setText(monTableau2.get(i+1).substring(2,4)+ "/" + monTableau2.get(i+1).substring(0,2) + " à " + monTableau2.get(i+1).substring(4,6) +":"+monTableau2.get(i+1).substring(6,8)+" UTC");
+                            break;
+
+                        case "C)":
+                            FragmentTwoC.setText("Piste " + monTableau2.get(i+1));
+                            break;
+
+                        default:
+                            break;
+                    }
+                    System.out.println(monTableau2.get(i));
+                }
+
+
+                //String[] ligneSplit = snowtamSplit[2].split(" ");
+
+                //FragmentTwoA.setText(snowtamSplit[1]);
+
+
+               // FragmentTwoA.setText(ligneSplit[1]);
+                //FragmentTwoB.setText(snowtamSplit[3]);
+               // FragmentTwoC.setText(snowtamSplit[4]);
+
+
             }
         });
 

@@ -9,18 +9,19 @@
     android:layout_marginTop="5sp"
     android:layout_marginRight="5sp"
     android:layout_marginBottom="5sp"
+    app:cardCornerRadius="2dp"
     app:cardBackgroundColor="#FAF5F5">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView_item"
             android:layout_width="110sp"
             android:layout_height="90sp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_launcher_foreground"
@@ -28,9 +29,9 @@
 
         <TextView
             android:id="@+id/textView_item"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="15dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
             android:text=""
@@ -41,5 +42,5 @@
             app:layout_constraintStart_toEndOf="@+id/imageView_item"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
