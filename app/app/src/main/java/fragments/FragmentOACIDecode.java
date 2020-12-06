@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.starsnow.R;
 
@@ -18,8 +18,7 @@ public class FragmentOACIDecode extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_oaci_decode, container, false);
-        TextView txt = (TextView) view.findViewById(R.id.textView_decodeA);
-        txt.setText("Chargement du snowtam");
+        RecyclerView txt = (RecyclerView) view.findViewById(R.id.recyclerView);
         return view;
     }
 }

@@ -2,7 +2,6 @@ package standardclasses;
 
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,13 +14,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 
 public class IACO_APIService extends Application {
     public Context c;
     public RequestQueue queue;
-    public String API_KEY = "13ddb470-3720-11eb-ac05-69afccc1125c";
+    public String API_KEY = "15fb12f0-37e0-11eb-952c-f3450517426f";
 
     public IACO_APIService(Context c){
         this.c = c;
