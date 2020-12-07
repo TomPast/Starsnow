@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.textclassifier.TextLanguage;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ import standardclasses.VolleyCallback2;
 
 public class MainActivity extends AppCompatActivity{
 
+    private static String MSG_STATUS;
     private CardView cardAerop1, cardAerop2, cardAerop3, cardAerop4;
     private Button ajoutAerop, btn_valider, rechercherCode;
     private ImageButton suppr1, suppr2, suppr3, suppr4;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MSG_STATUS = this.getResources().getString(R.string.popup_error);
 
         // Init liste des codes qui sera envoyé dans la prochaine activité
         codes = new ArrayList();
@@ -185,7 +189,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 public void onError(String error){
                     Log.d("APPELAPI","API ONERROR result = "+error);
-                    popUp("Code non valide");
+                    popUp();
                 }
             });
             ajoutCode.setVisibility(View.GONE);
@@ -229,10 +233,9 @@ public class MainActivity extends AppCompatActivity{
 
     /**
      * Affiche erreur
-     * @param message
      */
-    public void popUp(String message) {
-        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+    public void popUp() {
+        Toast toast = Toast.makeText(this, MSG_STATUS, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }

@@ -13,4 +13,5 @@
     <string name="hybride">Hybride</string>
     <string name="rechercherCode">Search</string>
     <string name="msg_splashscreen">Welcome you on board</string>
+    <string name="popup_error">Unknow Code</string>
 </resources>

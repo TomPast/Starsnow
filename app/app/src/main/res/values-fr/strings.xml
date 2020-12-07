@@ -13,4 +13,5 @@
     <string name="hybride">Hybride</string>
     <string name="rechercherCode">RECHERCHER</string>
     <string name="msg_splashscreen">Vous souhaite la bienvenue à bord</string>
+    <string name="popup_error">Code Inconnu</string>
 </resources>
