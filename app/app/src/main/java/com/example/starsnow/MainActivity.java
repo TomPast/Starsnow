@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import standardclasses.Aeroport;
 import standardclasses.IACO_APIService;
 import standardclasses.VolleyCallback;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity{
     private ConstraintLayout ajoutCode;
     private TextView code_aeroport1, code_aeroport2, code_aeroport3, code_aeroport4, aeroport_titre1, aeroport_titre2, aeroport_titre3, aeroport_titre4;
     private EditText otp_textbox1, otp_textbox2, otp_textbox3, otp_textbox4;
-    private String[] codes;
+    private ArrayList<String> codes;
     private IACO_APIService API;
     private String nomAerop;
 
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         // Init liste des codes qui sera envoyé dans la prochaine activité
-        codes = new String[4];
+        codes = new ArrayList();
 
         // Recupere l'id des elements graphiques
         cardAerop1 = findViewById(R.id.card_aerop1);
@@ -107,28 +109,28 @@ public class MainActivity extends AppCompatActivity{
     View.OnClickListener handlerSuppr1 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop1.setVisibility(View.GONE);
-            codes[0] = null;
+            codes.remove(0);
             affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr2 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop2.setVisibility(View.GONE);
-            codes[1] = null;
+            codes.remove(1);
             affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr3 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop3.setVisibility(View.GONE);
-            codes[2] = null;
+            codes.remove(2);
             affichageAjoutAerop();
         }
     };
     View.OnClickListener handlerSuppr4 = new View.OnClickListener() {
         public void onClick(View v) {
             cardAerop4.setVisibility(View.GONE);
-            codes[3] = null;
+            codes.remove(3);
             affichageAjoutAerop();
         }
     };
@@ -153,25 +155,25 @@ public class MainActivity extends AppCompatActivity{
                     nomAerop = results.getNom();
                     if (cardAerop1.getVisibility() == View.GONE) {
                         code_aeroport1.setText(codeOACI.toUpperCase());
-                        codes[0] = codeOACI;
+                        codes.add(0, codeOACI);
                         aeroport_titre1.setText(nomAerop);
                         cardAerop1.setVisibility(View.VISIBLE);
                     } else {
                         if (cardAerop2.getVisibility() == View.GONE) {
                             code_aeroport2.setText(codeOACI.toUpperCase());
-                            codes[1] = codeOACI;
+                            codes.add(1, codeOACI);
                             aeroport_titre2.setText(nomAerop);
                             cardAerop2.setVisibility(View.VISIBLE);
                         } else {
                             if (cardAerop3.getVisibility() == View.GONE) {
                                 code_aeroport3.setText(codeOACI.toUpperCase());
-                                codes[2] = codeOACI;
+                                codes.add(2, codeOACI);
                                 aeroport_titre3.setText(nomAerop);
                                 cardAerop3.setVisibility(View.VISIBLE);
                             } else {
                                 if (cardAerop4.getVisibility() == View.GONE) {
                                     code_aeroport4.setText(codeOACI.toUpperCase());
-                                    codes[3] = codeOACI;
+                                    codes.add(3, codeOACI);
                                     aeroport_titre4.setText(nomAerop);
                                     cardAerop4.setVisibility(View.VISIBLE);
 
@@ -218,7 +220,7 @@ public class MainActivity extends AppCompatActivity{
      */
     View.OnClickListener handlerValider = new View.OnClickListener() {
         public void onClick(View v) {
-            Log.d("MSG",codes[0]);
+            Log.d("MSG",codes.toString());
             Intent codeOACI = new Intent(MainActivity.this, codeOACI.class);
             codeOACI.putExtra("codes",codes);
             startActivity(codeOACI);
