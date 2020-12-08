@@ -1,51 +1,43 @@
 package com.example.starsnow;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.textclassifier.TextLanguage;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 
 import standardclasses.Aeroport;
 import standardclasses.IACO_APIService;
-import standardclasses.VolleyCallback;
 import standardclasses.VolleyCallback2;
 
 public class MainActivity extends AppCompatActivity{
 
     private static String MSG_STATUS;
-    private CardView cardAerop1, cardAerop2, cardAerop3, cardAerop4;
-    private Button ajoutAerop, btn_valider, rechercherCode;
-    private ImageButton suppr1, suppr2, suppr3, suppr4;
+    private String nomAerop;
+    private ArrayList codes;
+    private IACO_APIService API;
     private ConstraintLayout ajoutCode;
+    private CardView cardAerop1, cardAerop2, cardAerop3, cardAerop4;
+    private Button btn_valider, ajoutAerop;
     private TextView code_aeroport1, code_aeroport2, code_aeroport3, code_aeroport4, aeroport_titre1, aeroport_titre2, aeroport_titre3, aeroport_titre4;
     private EditText otp_textbox1, otp_textbox2, otp_textbox3, otp_textbox4;
-    private ArrayList<String> codes;
-    private IACO_APIService API;
-    private String nomAerop;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         MSG_STATUS = this.getResources().getString(R.string.popup_error);
 
         // Init liste des codes qui sera envoyé dans la prochaine activité
@@ -56,14 +48,14 @@ public class MainActivity extends AppCompatActivity{
         cardAerop2 = findViewById(R.id.card_aerop2);
         cardAerop3 = findViewById(R.id.card_aerop3);
         cardAerop4 = findViewById(R.id.card_aerop4);
-        suppr1 = findViewById((R.id.icone_supp1));
-        suppr2 = findViewById((R.id.icone_supp2));
-        suppr3 = findViewById((R.id.icone_supp3));
-        suppr4 = findViewById((R.id.icone_supp4));
+        ImageButton suppr1 = findViewById((R.id.icone_supp1));
+        ImageButton suppr2 = findViewById((R.id.icone_supp2));
+        ImageButton suppr3 = findViewById((R.id.icone_supp3));
+        ImageButton suppr4 = findViewById((R.id.icone_supp4));
         ajoutAerop = findViewById(R.id.ajoutAerop);
         btn_valider = findViewById(R.id.btn_valider);
         ajoutCode = findViewById(R.id.ajoutCode);
-        rechercherCode = findViewById(R.id.rechercherCode);
+        Button rechercherCode = findViewById(R.id.rechercherCode);
 
         code_aeroport1 = findViewById(R.id.code_aeroport1);
         code_aeroport2 = findViewById(R.id.code_aeroport2);
@@ -80,7 +72,7 @@ public class MainActivity extends AppCompatActivity{
         otp_textbox3 = findViewById(R.id.otp_edit_box3);
         otp_textbox4 = findViewById(R.id.otp_edit_box4);
 
-        // Rend invisibles certains elements
+        //Cache les éléments que l'on ne souhaite pas voir lors de la création
         cardAerop1.setVisibility(View.GONE);
         cardAerop2.setVisibility(View.GONE);
         cardAerop3.setVisibility(View.GONE);
@@ -96,8 +88,8 @@ public class MainActivity extends AppCompatActivity{
         rechercherCode.setOnClickListener(handlerRecherche);
         btn_valider.setOnClickListener(handlerValider);
 
+        //Initialise la zone de texte customisée pour l'ajout du code
         EditText[] edit = {otp_textbox1, otp_textbox2, otp_textbox3, otp_textbox4};
-
         otp_textbox1.addTextChangedListener(new GenericTextWatcher(otp_textbox1, edit));
         otp_textbox2.addTextChangedListener(new GenericTextWatcher(otp_textbox2, edit));
         otp_textbox3.addTextChangedListener(new GenericTextWatcher(otp_textbox3, edit));
@@ -180,7 +172,6 @@ public class MainActivity extends AppCompatActivity{
                                     codes.add(3, codeOACI);
                                     aeroport_titre4.setText(nomAerop);
                                     cardAerop4.setVisibility(View.VISIBLE);
-
                                 }
                             }
                         }
@@ -203,13 +194,15 @@ public class MainActivity extends AppCompatActivity{
     View.OnClickListener handlerAjout = new View.OnClickListener() {
         public void onClick(View v) {
             ajoutCode.setVisibility(View.VISIBLE);
-            btn_valider.setVisibility(View.GONE);
-            //cardAerop3.setVisibility(View.GONE);
+            ajoutCode.setZ(18);
+            btn_valider.setZ(0);
+            cardAerop3.setZ(1);
+            ajoutAerop.setZ(2);
         }
     };
 
     /**
-     * Affiche ou non le bouton d'ajout d'aéroport en fonction du nombre d'aéroport deja presents
+     * Affiche ou non le bouton d'ajout d'aéroport en fonction du nombre d'aéroports deja presents
      */
     private void affichageAjoutAerop() {
         if ((cardAerop1.getVisibility() == View.VISIBLE) && (cardAerop2.getVisibility() == View.VISIBLE) && (cardAerop3.getVisibility() == View.VISIBLE) && (cardAerop4.getVisibility() == View.VISIBLE)) {
@@ -220,7 +213,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     /**
-     * Changement d'activité
+     * Changement d'activité avec envoi de la liste des codes
      */
     View.OnClickListener handlerValider = new View.OnClickListener() {
         public void onClick(View v) {
@@ -232,7 +225,7 @@ public class MainActivity extends AppCompatActivity{
     };
 
     /**
-     * Affiche erreur
+     * Affiche pop up erreur
      */
     public void popUp() {
         Toast toast = Toast.makeText(this, MSG_STATUS, Toast.LENGTH_LONG);
