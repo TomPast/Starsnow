@@ -19,7 +19,5 @@ public class MapFragment extends SupportMapFragment implements OnMapReadyCallbac
     @Override
     public void onMapReady(final GoogleMap gmap) {
         this.googleMap = gmap;
-
-
     }
 }
