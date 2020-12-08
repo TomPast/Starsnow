@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import Adapter.ViewPagerAdapter;
 import standardclasses.Aeroport;
 import standardclasses.IACO_APIService;
+import standardclasses.Snowtam;
 import standardclasses.SnowtamDecodeObject;
 import standardclasses.VolleyCallback;
 import standardclasses.VolleyCallback2;
@@ -65,6 +66,26 @@ public class codeOACI extends AppCompatActivity {
         ArrayList<String> aeroports = (ArrayList<String>) getIntent().getSerializableExtra("codes");
         AeroportList = new Aeroport[aeroports.size()];
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition()==1) {
+                    updateSnowtamDecode(currentAeroport.getSnowtam().getPlainCodedSnowtam());
+                    System.out.println("HEHEO");
+                }
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
         IACO_APIService API = new IACO_APIService(this.getApplicationContext());
         int i = 0;
         currentIndex = 0;
@@ -79,7 +100,6 @@ public class codeOACI extends AppCompatActivity {
                     if(finalI == 0){
                         updateSnowtam(result);
                     }
-                    decodage(result);
                 }
             });
 
@@ -120,6 +140,7 @@ public class codeOACI extends AppCompatActivity {
                 System.out.println(currentIndex);
                 currentAeroport = AeroportList[currentIndex];
                 updateView(currentAeroport);
+                //updateSnowtamDecode(currentAeroport.getSnowtam().getPlainCodedSnowtam());
             }
         });
 
@@ -136,6 +157,7 @@ public class codeOACI extends AppCompatActivity {
                 System.out.println(currentIndex);
                 currentAeroport = AeroportList[currentIndex];
                 updateView(currentAeroport);
+                //updateSnowtamDecode(currentAeroport.getSnowtam().getPlainCodedSnowtam());
             }
         });
 
@@ -151,7 +173,8 @@ public class codeOACI extends AppCompatActivity {
         });
     }
 
-    public void decodage(String result){
+    public void updateSnowtamDecode(String result){
+        List<SnowtamDecodeObject> letter = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         //définit l'agencement des cellules, ici de façon verticale, comme une ListView
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -752,7 +775,7 @@ public class codeOACI extends AppCompatActivity {
                 default:
                     break;
             }
-            System.out.println(monTableau2.get(i));
+
         }
     }
 

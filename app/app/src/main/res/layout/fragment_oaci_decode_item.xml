@@ -20,7 +20,7 @@
             android:id="@+id/imageView_item"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="10dp"
             android:layout_gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
