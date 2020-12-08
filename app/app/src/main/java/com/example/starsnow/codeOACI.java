@@ -38,13 +38,13 @@ public class codeOACI extends AppCompatActivity {
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         tabLayout.post(() -> tabLayout.setupWithViewPager(viewPager));
 
-
+        String[] aeroport = (String[]) getIntent().getSerializableExtra("codes");
 
 
 
         IACO_APIService API = new IACO_APIService(this.getApplicationContext());
 
-        API.getSnowtam("ENBO", new VolleyCallback() {
+        API.getSnowtam(aeroport[0], new VolleyCallback() {
             @Override
             public void onSuccess(String result) {
                 System.out.println(result);
@@ -53,7 +53,7 @@ public class codeOACI extends AppCompatActivity {
             }
         });
 
-        API.getAeroport("ENBO", new VolleyCallback2() {
+        API.getAeroport(aeroport[0], new VolleyCallback2() {
             @Override
             public void onSuccess(Aeroport results) {
                 currentAeroport = results;
