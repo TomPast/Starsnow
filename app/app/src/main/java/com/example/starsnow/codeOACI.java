@@ -1,11 +1,5 @@
 package com.example.starsnow;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,12 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -28,11 +19,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import Adapter.ViewPagerAdapter;
-import fragments.FragmentOACICode;
-import fragments.FragmentOACIDecode;
 import standardclasses.Aeroport;
 import standardclasses.IACO_APIService;
-import standardclasses.Snowtam;
 import standardclasses.VolleyCallback;
 import standardclasses.VolleyCallback2;
 
@@ -132,6 +120,11 @@ public class codeOACI extends AppCompatActivity {
                 System.out.println(currentIndex);
                 currentAeroport = AeroportList[currentIndex];
                 updateView(currentAeroport);
+            }
+
+            @Override
+            public void onError(String results) {
+                //
             }
         });
 

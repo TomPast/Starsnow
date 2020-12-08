@@ -17,7 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 
 public class IACO_APIService extends Application {
@@ -76,9 +75,10 @@ public class IACO_APIService extends Application {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if(response.length() > 0){
+                        Log.d("APPELAPI","IACO APISERVICE ONREPONSE RESPONSE"+response.length());
+                        if(response.length() > 2){
                             try {
-                                System.out.println(response);
+                                //System.out.println(response);
                                 JSONArray responseJSON = new JSONArray(response);
                                 JSONObject aeroportEntry = responseJSON.getJSONObject(0);
                                 String aeroportName = aeroportEntry.getString("airportName");
@@ -86,14 +86,16 @@ public class IACO_APIService extends Application {
                                 DecimalFormat df = new DecimalFormat("0.000000");
                                 double latitude = (double) coordinates.get(0);
                                 double longitude = (double) coordinates.get(1);
-                                System.out.println(OACI+" "+aeroportName+" |"+latitude+"/"+longitude);
+                                //System.out.println(OACI+" "+aeroportName+" |"+latitude+"/"+longitude);
                                 callback.onSuccess(new Aeroport(OACI, aeroportName,latitude,longitude));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                        }else{
+                        }
+                        else {
                             callback.onError("CODE OACI NON VALIDE");
                         }
+
                     }
                 }, new Response.ErrorListener() {
             @Override

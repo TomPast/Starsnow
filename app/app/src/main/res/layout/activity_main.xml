@@ -7,6 +7,116 @@
     tools:context=".MainActivity"
     android:background="@drawable/background">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ajoutCode"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_weight="0"
+        android:animateLayoutChanges="true"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <TextView
+            android:id="@+id/titre1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/lato_black"
+            android:text="@string/titre_ajout"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/soustitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/lato_regular"
+            android:text="@string/soustitre_ajout"
+            android:textColor="#656565"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titre1" />
+
+        <LinearLayout
+            android:id="@+id/root_otp_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="24dp"
+            android:weightSum="4"
+            app:layout_constraintBottom_toTopOf="@+id/rechercherCode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/soustitre"
+            app:layout_constraintVertical_bias="0.469">
+
+            <EditText
+                android:id="@+id/otp_edit_box1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/square_edittext"
+                android:gravity="center"
+                android:inputType="textCapCharacters"
+                android:maxLength="1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/otp_edit_box2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/square_edittext"
+                android:gravity="center"
+                android:inputType="textCapCharacters"
+                android:maxLength="1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/otp_edit_box3"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/square_edittext"
+                android:gravity="center"
+                android:inputType="textCapCharacters"
+                android:maxLength="1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/otp_edit_box4"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/square_edittext"
+                android:gravity="center"
+                android:inputType="textCapCharacters"
+                android:maxLength="1"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/rechercherCode"
+            android:layout_width="327dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="72dp"
+            android:fontFamily="@font/lato_black"
+            android:text="@string/rechercherCode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/instructions"
         android:layout_width="wrap_content"
@@ -88,7 +198,7 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/Aeroport_titre1"
+                android:id="@+id/aeroport_titre1"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -105,7 +215,7 @@
                 android:id="@+id/code_aeroport1"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Aeroport_titre1"
+                android:layout_below="@+id/aeroport_titre1"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="2dp"
@@ -161,7 +271,7 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/Aeroport_titre2"
+                android:id="@+id/aeroport_titre2"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -178,7 +288,7 @@
                 android:id="@+id/code_aeroport2"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Aeroport_titre2"
+                android:layout_below="@+id/aeroport_titre2"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="2dp"
@@ -234,7 +344,7 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/Aeroport_titre3"
+                android:id="@+id/aeroport_titre3"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -251,7 +361,7 @@
                 android:id="@+id/code_aeroport3"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Aeroport_titre3"
+                android:layout_below="@+id/aeroport_titre3"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="2dp"
@@ -308,7 +418,7 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/Aeroport_titre4"
+                android:id="@+id/aeroport_titre4"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -325,7 +435,7 @@
                 android:id="@+id/code_aeroport4"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/Aeroport_titre4"
+                android:layout_below="@+id/aeroport_titre4"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="2dp"
@@ -347,115 +457,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_aerop4" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ajoutCode"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:animateLayoutChanges="true"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:id="@+id/titre1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/lato_black"
-            android:text="@string/titre_ajout"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/soustitre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/lato_regular"
-            android:text="@string/soustitre_ajout"
-            android:textColor="#656565"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titre1" />
-
-        <LinearLayout
-            android:id="@+id/root_otp_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="24dp"
-            android:weightSum="4"
-            app:layout_constraintBottom_toTopOf="@+id/rechercherCode"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/soustitre"
-            app:layout_constraintVertical_bias="0.469">
-
-            <EditText
-                android:id="@+id/otp_edit_box1"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/square_edittext"
-                android:gravity="center"
-                android:inputType="textCapCharacters"
-                android:maxLength="1"
-                android:textSize="30sp" />
-
-            <EditText
-                android:id="@+id/otp_edit_box2"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/square_edittext"
-                android:gravity="center"
-                android:inputType="textCapCharacters"
-                android:maxLength="1"
-                android:textSize="30sp" />
-
-            <EditText
-                android:id="@+id/otp_edit_box3"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/square_edittext"
-                android:gravity="center"
-                android:inputType="textCapCharacters"
-                android:maxLength="1"
-                android:textSize="30sp" />
-
-            <EditText
-                android:id="@+id/otp_edit_box4"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:background="@drawable/square_edittext"
-                android:gravity="center"
-                android:inputType="textCapCharacters"
-                android:maxLength="1"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/rechercherCode"
-            android:layout_width="327dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="72dp"
-            android:fontFamily="@font/lato_black"
-            android:text="Valider"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

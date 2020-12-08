@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Starsnow</string>
-    <string name="instructions">Saisissez les codes IACO</string>
-    <string name="btn_valider">Rechercher</string>
+    <string name="instructions">Enter ICAO codes</string>
+    <string name="btn_valider">Validate</string>
     <string name="logo_description">Logo</string>
-    <string name="aeroport_titre1">Aeroport 1</string>
+    <string name="aeroport_titre1">Airport 1</string>
     <string name="code_aeroport1">KJFK</string>
     <string name="ajoutAerop">Ajouter un nouvel aéroport</string>
     <string name="titre_ajout">Nouvel Aéroport</string>
@@ -21,4 +21,7 @@
     <string name="chargementSnowtam">Chargement du Snowtam...</string>
     <string name="noSnowtam">Pas de snowtam</string>
     <string name="APIProblem">Problème appel API</string>
+    <string name="rechercherCode">Search</string>
+    <string name="msg_splashscreen">Welcome you on board</string>
+    <string name="popup_error">Unknow Code</string>
 </resources>

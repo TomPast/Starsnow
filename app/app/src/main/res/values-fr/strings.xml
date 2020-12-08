@@ -22,4 +22,7 @@
     <string name="chargementSnowtam">Chargement du Snowtam...</string>
     <string name="noSnowtam">Pas de snowtam</string>
     <string name="APIProblem">Problème appel API</string>
+    <string name="rechercherCode">RECHERCHER</string>
+    <string name="msg_splashscreen">Vous souhaite la bienvenue à bord</string>
+    <string name="popup_error">Code Inconnu</string>
 </resources>
