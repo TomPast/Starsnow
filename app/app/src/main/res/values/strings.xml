@@ -13,6 +13,99 @@
     <string name="normal">Normal</string>
     <string name="hybride">Hybride</string>
 
+    <string name="month01">" January"</string>
+    <string name="month02">" February"</string>
+    <string name="month03">" March"</string>
+    <string name="month04">" April"</string>
+    <string name="month05">" May"</string>
+    <string name="month06">" June"</string>
+    <string name="month07">" July"</string>
+    <string name="month08">" August"</string>
+    <string name="month09">" September"</string>
+    <string name="month10">" October"</string>
+    <string name="month11">" November"</string>
+    <string name="month12">" December"</string>
+    <string name="at">" at "</string>
+
+    <string name="runway">"Runway "</string>
+
+    <string name="left">"Left "</string>
+    <string name="right">"Right "</string>
+    <string name="left_rwy">" Left of runway "</string>
+    <string name="right_rwy">" Right of runway "</string>
+    <string name="left_right_rwy">" Left and Right of runway "</string>
+
+    <string name="clr_rwy_lenght">"Cleared runway length "</string>
+    <string name="clr_rwy_width">"Cleared runway width "</string>
+
+    <string name="clear_dry">"Cleared and dry "</string>
+    <string name="wet">"Wet or water patches "</string>
+    <string name="damp">"Damp "</string>
+    <string name="rimes">"Rimes or frost covered "</string>
+    <string name="dry_snow">"Dry snow "</string>
+    <string name="wet_snow">"Wet snow "</string>
+    <string name="slush">"Slush "</string>
+    <string name="ice">"Ice "</string>
+    <string name="rolled_snow">"Compacted or rolled snow "</string>
+    <string name="ridges">"Frozen ruts or ridges "</string>
+    <string name="top_ice">on top of Ice</string>
+    <string name="top_rolled">on top of compacted snow</string>
+
+    <string name="threshold">"Threshold: "</string>
+    <string name="mid_rwy">"\nMid runway "</string>
+    <string name="roll_out">"\nRoll out "</string>
+
+    <string name="unit_m">"m "</string>
+    <string name="unit_cm">"cm "</string>
+    <string name="unit_mm">"mm "</string>
+
+    <string name="mean_depth">"Mean depth "</string>
+
+    <string name="medium_poor">"Medium, poor "</string>
+    <string name="medium">"Medium "</string>
+    <string name="medium_good">"Medium, good "</string>
+    <string name="good">"Good "</string>
+    <string name="poor">"Poor "</string>
+
+    <string name="equipment">"\nInstrument: "</string>
+
+    <string name="brd">Brakemeter-Dynometer</string>
+    <string name="grt">Grip tester</string>
+    <string name="mum">Mu-meter</string>
+    <string name="rft">Runway friction tester</string>
+    <string name="sfh">Surface friction tester (High-pressure tire)</string>
+    <string name="sfl">Surface friction tester (Low-pressure tire)</string>
+    <string name="skh">Skiddometer (High-pressure tire)</string>
+    <string name="skl">Skiddometer (Low-pressure tire)</string>
+    <string name="tap">Tapley meter</string>
+    <string name="braking_act">"Braking action "</string>
+
+    <string name="crit_snow_bk">"Critical snow bank "</string>
+
+    <string name="light_obs">"Lights obscured: "</string>
+    <string name="no_light_obs">"No lights obscured "</string>
+
+    <string name="clearance">"Further clearance "</string>
+    <string name="clearance_tot">"Further clearance total "</string>
+
+    <string name="time_completion">"Anticipated time of completion: "</string>
+
+    <string name="taxi">"Taxiway "</string>
+    <string name="no_taxi">No taxiway available</string>
+
+    <string name="snow_banks">"Snow banks: YES space "</string>
+
+    <string name="parking">"Parking "</string>
+    <string name="unusable">Unusable</string>
+    <string name="parking_unusable">Parkings unusable</string>
+
+    <string name="next_obs">"Next observation: "</string>
+
+    <string name="notes">"Note(s): "</string>
+
+
+
+
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
 
