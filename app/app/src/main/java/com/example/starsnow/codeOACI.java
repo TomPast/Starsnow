@@ -99,27 +99,68 @@ public class codeOACI extends AppCompatActivity {
                             break;
 
                         case "B)" :
-                             String decodageB = monTableau2.get(i+1).substring(2,4)+ "/" + monTableau2.get(i+1).substring(0,2) + " at " + monTableau2.get(i+1).substring(4,6) +":"+monTableau2.get(i+1).substring(6,8)+" UTC";
+                            String monthNumber = monTableau2.get(i+1).substring(0,2);
+                            String month = "";
+                            switch (monthNumber){
+                                case "01":
+                                    month = getString(R.string.month01);
+                                break;
+                                case "02":
+                                    month = getString(R.string.month02);
+                                    break;
+                                case "03":
+                                    month = getString(R.string.month03);
+                                    break;
+                                case "04":
+                                    month = getString(R.string.month04);
+                                    break;
+                                case "05":
+                                    month = getString(R.string.month05);
+                                    break;
+                                case "06":
+                                    month = getString(R.string.month06);
+                                    break;
+                                case "07":
+                                    month = getString(R.string.month07);
+                                    break;
+                                case "08":
+                                    month = getString(R.string.month08);
+                                    break;
+                                case "09":
+                                    month = getString(R.string.month09);
+                                    break;
+                                case "10":
+                                    month = getString(R.string.month10);
+                                    break;
+                                case "11":
+                                    month = getString(R.string.month11);
+                                    break;
+                                case "12":
+                                    month = getString(R.string.month12);
+                                    break;
+                            }
+
+                             String decodageB = monTableau2.get(i+1).substring(2,4) + month + getString(R.string.at) + monTableau2.get(i+1).substring(4,6) +":"+monTableau2.get(i+1).substring(6,8)+" UTC";
                             letter.add(new SnowtamDecodeObject(decodageB,getDrawable(R.drawable.b)));
                             break;
 
                         case "C)":
-                            String decodageC = "Runway " + monTableau2.get(i+1);
+                            String decodageC = getString(R.string.runway) + monTableau2.get(i+1);
                             letter.add(new SnowtamDecodeObject(decodageC,getDrawable(R.drawable.c)));
                             break;
 
                         case "D)" :
                             String decodageD;
                             if(monTableau2.get(i+1).contains("L")){
-                                decodageD = "Cleared runway lenght "+ monTableau2.get(i+1) + "m Left";
+                                decodageD = getString(R.string.clr_rwy_lenght) + monTableau2.get(i+1) + getString(R.string.unit_m) +getString(R.string.left);
                                 letter.add(new SnowtamDecodeObject(decodageD,getDrawable(R.drawable.d)));
                             }
                             else if (monTableau2.get(i+1).contains("R")){
-                                decodageD = "Cleared runway lenght "+ monTableau2.get(i+1) + "m Right";
+                                decodageD = getString(R.string.clr_rwy_lenght) + monTableau2.get(i+1) +getString(R.string.unit_m) +getString(R.string.right);
                                 letter.add(new SnowtamDecodeObject(decodageD,getDrawable(R.drawable.d)));
                             }
                             else{
-                                decodageD = "Cleared runway lenght "+ monTableau2.get(i+1) + "m";
+                                decodageD = getString(R.string.clr_rwy_lenght) + monTableau2.get(i+1) + getString(R.string.unit_m) ;
                                 letter.add(new SnowtamDecodeObject(decodageD,getDrawable(R.drawable.d)));
                             }
                             break;
@@ -128,15 +169,15 @@ public class codeOACI extends AppCompatActivity {
                            String decodageE;
                            char lastChar = monTableau2.get(i+1).charAt(monTableau2.get(i+1).length());
                            if(lastChar == 'L'){
-                               decodageE = "Cleared runway width " + monTableau2.get(i+1).substring(0,monTableau2.get(i+1).length()-1) + "m Left";
+                               decodageE = getString(R.string.clr_rwy_width) + monTableau2.get(i+1).substring(0,monTableau2.get(i+1).length()-1) + getString(R.string.unit_m) +getString(R.string.left);
                                letter.add(new SnowtamDecodeObject(decodageE,getDrawable(R.drawable.e)));
                            }
                            else if(lastChar=='R'){
-                               decodageE = "Cleared runway width " + monTableau2.get(i+1).substring(0,monTableau2.get(i+1).length()-1) + "m Right";
+                               decodageE = getString(R.string.clr_rwy_width) + monTableau2.get(i+1).substring(0,monTableau2.get(i+1).length()-1) + getString(R.string.unit_m) +getString(R.string.right);
                                letter.add(new SnowtamDecodeObject(decodageE,getDrawable(R.drawable.e)));
                            }
                            else{
-                               decodageE = "Cleared runway width " + monTableau2.get(i+1) + "m";
+                               decodageE = getString(R.string.clr_rwy_width) + monTableau2.get(i+1) + getString(R.string.unit_m) ;
                                letter.add(new SnowtamDecodeObject(decodageE,getDrawable(R.drawable.e)));
                            }
                             break;
@@ -147,124 +188,124 @@ public class codeOACI extends AppCompatActivity {
                             for (int j=0; j<val.length; j++){
                                 if(val[j].contains("NIL")){
                                     if(j==0){
-                                        threshold = " Cleared and dry";
+                                        threshold = getString(R.string.clear_dry);
                                     }
                                     if(j==1){
-                                        mid = " Cleared and dry";
+                                        mid = getString(R.string.clear_dry);;
                                     }
                                     if(j==2){
-                                        out = " Cleared and dry";
+                                        out = getString(R.string.clear_dry);;
                                     }
 
                                 }
                                 if(val[j].contains("1")){
                                     if (j==0) {
-                                        threshold = " Damp";
+                                        threshold = getString(R.string.damp);;
                                     }
                                     if (j==1) {
-                                        mid = " Damp";
+                                        mid = getString(R.string.damp);;
                                     }
                                     if (j==2) {
-                                        out = " Damp";
+                                        out = getString(R.string.damp);;
                                     }
                                 }
                                 if(val[j].contains("2")){
                                     if (j==0) {
-                                        threshold = " Wet or water patches";
+                                        threshold = getString(R.string.wet);;
                                     }
                                     if (j==1) {
-                                        mid = " Wet or water patches";
+                                        mid = getString(R.string.wet);;
                                     }
                                     if (j==2) {
-                                        out = " Wet or water patches";
+                                        out = getString(R.string.wet);;
                                     }
                                 }
                                 if(val[j].contains("3")){
                                     if (j==0) {
-                                        threshold = " Rime or frost covered";
+                                        threshold = getString(R.string.rimes);;
                                     }
                                     if (j==1) {
-                                        mid = " Rime or frost covered";
+                                        mid = getString(R.string.rimes);;
                                     }
                                     if (j==2) {
-                                        out = " Rime or frost covered";
+                                        out = getString(R.string.rimes);;
                                     }
                                 }
                                 if(val[j].contains("4")){
                                     if (j==0) {
-                                        threshold = " Dry snow";
+                                        threshold = getString(R.string.dry_snow);;
                                     }
                                     if (j==1) {
-                                        mid = " Dry snow";
+                                        mid = getString(R.string.dry_snow);;
                                     }
                                     if (j==2) {
-                                        out = " Dry snow";
+                                        out = getString(R.string.dry_snow);;
                                     }
                                 }
                                 if(val[j].contains("5")){
                                     if (j==0) {
-                                        threshold = " Wet snow";
+                                        threshold = getString(R.string.wet_snow);;
                                     }
                                     if (j==1) {
-                                        mid = " Wet snow";
+                                        mid = getString(R.string.wet_snow);;
                                     }
                                     if (j==2) {
-                                        out = " Wet snow";
+                                        out = getString(R.string.wet_snow);;
                                     }
                                 }
                                 if(val[j].contains("6")){
                                     if (j==0) {
-                                        threshold = " Slush";
+                                        threshold = getString(R.string.slush);;
                                     }
                                     if (j==1) {
-                                        mid = " Slush";
+                                        mid = getString(R.string.slush);;
                                     }
                                     if (j==2) {
-                                        out = " Slush";
+                                        out = getString(R.string.slush);;
                                     }
                                 }
                                 if(val[j].contains("7")){
                                     if (j==0) {
-                                        threshold = " Ice";
+                                        threshold = getString(R.string.ice);;
                                     }
                                     if (j==1) {
-                                        mid =  " Ice";
+                                        mid =  getString(R.string.ice);;
                                     }
                                     if (j==2) {
-                                        out = " Ice";
+                                        out = getString(R.string.ice);;
                                     }
                                 }
                                 if(val[j].contains("8")){
                                     if (j==0) {
-                                        threshold = " Compact or rolled snow";
+                                        threshold = getString(R.string.rolled_snow);
                                     }
                                     if (j==1) {
-                                        mid =" Compact or rolled snow";
+                                        mid = getString(R.string.rolled_snow);
                                     }
                                     if (j==2) {
-                                        out = " Compact or rolled snow";
+                                        out = getString(R.string.rolled_snow);
                                     }
                                 }
                                 if(val[j].contains("9")){
                                     if (j==0) {
-                                        threshold = " Frozen ruts or ridges";
+                                        threshold = getString(R.string.ridges);
                                     }
                                     if (j==1) {
-                                        mid = " Frozen ruts or ridges";
+                                        mid = getString(R.string.ridges);
                                     }
                                     if (j==2) {
-                                        out = " Frozen ruts or ridges";
+                                        out = getString(R.string.ridges);
                                     }
                                 }
                             }
 
-                            String decodageF = "Threshold: "+threshold +" \nMid runway: "+mid+" \nRoll out: "+out;
+                            String decodageF = getString(R.string.threshold) +threshold +getString(R.string.mid_rwy)+mid+getString(R.string.roll_out)+out;
                             letter.add(new SnowtamDecodeObject(decodageF,getDrawable(R.drawable.f)));
                             break;
 
                         case "G)":
                             String[] valG = monTableau2.get(i+1).split("/");
-                            String decodageG = "Mean depth Threshold: "+valG[0]+"mm \nMid runway: "+valG[1]+"mm \nRoll out: "+valG[2]+"mm";
+                            String decodageG = getString(R.string.mean_depth)+ getString(R.string.threshold) +valG[0]+getString(R.string.unit_mm) + getString(R.string.mid_rwy)  +valG[1] + getString(R.string.unit_mm)+ getString(R.string.roll_out)+valG[2]+getString(R.string.unit_mm) ;
                             letter.add(new SnowtamDecodeObject(decodageG,getDrawable(R.drawable.g)));
                             break;
 
@@ -276,87 +317,87 @@ public class codeOACI extends AppCompatActivity {
                             for (int j=0; j<valH2.length; j++){
                                 if((valH2[j].equals("2")) || ((Integer.parseInt(valH2[j]) <= 29) && (Integer.parseInt(valH2[j]) >= 26))){
                                     if (j==0) {
-                                        thresholdH = " Medium, Poor";
+                                        thresholdH = getString(R.string.medium_poor);
                                     }
                                     if (j==1) {
-                                        midH = " Medium, Poor";
+                                        midH = getString(R.string.medium_poor);
                                     }
                                     if (j==2) {
-                                        outH = " Medium, Poor";
+                                        outH = getString(R.string.medium_poor);
                                     }
                                 }
                                 else if((valH2[j].equals("3")) || ((Integer.parseInt(valH2[j]) <= 35) && (Integer.parseInt(valH2[j]) >= 30))){
                                     if (j==0) {
-                                        thresholdH = " Medium";
+                                        thresholdH = getString(R.string.medium);
                                     }
                                     if (j==1) {
-                                        midH = " Medium";
+                                        midH = getString(R.string.medium);
                                     }
                                     if (j==2) {
-                                        outH = " Medium";
+                                        outH = getString(R.string.medium);
                                     }
                                 }
                                 else if((valH2[j].equals("4")) || ((Integer.parseInt(valH2[j]) <= 39) && (Integer.parseInt(valH2[j]) >= 36))){
                                     if (j==0) {
-                                        thresholdH = " Medium, Good";
+                                        thresholdH = getString(R.string.medium_good);
                                     }
                                     if (j==1) {
-                                        midH = " Medium, Good";
+                                        midH = getString(R.string.medium_good);
                                     }
                                     if (j==2) {
-                                        outH = " Medium, Good";
+                                        outH = getString(R.string.medium_good);
                                     }
                                 }
                                 else if((valH2[j].equals("5")) || (Integer.parseInt(valH2[j]) >= 40)){
                                     if (j==0) {
-                                        thresholdH = " Good";
+                                        thresholdH = getString(R.string.good);
                                     }
                                     if (j==1) {
-                                        midH = " Good";
+                                        midH = getString(R.string.good);
                                     }
                                     if (j==2) {
-                                        outH = " Good";
+                                        outH = getString(R.string.good);
                                     }
                                 }
                                 else{
                                     if(j==0){
-                                        thresholdH = " Poor";
+                                        thresholdH = getString(R.string.poor);
                                     }
                                     if(j==1){
-                                        midH = " Poor";
+                                        midH = getString(R.string.poor);
                                     }
                                     if(j==2){
-                                        outH = " Poor";
+                                        outH = getString(R.string.poor);
                                     }
                                 }
                                 if (valH1.length==2){
                                     switch (valH1[1]) {
                                         case "BRD":
-                                            equipment = "Brakemeter-Dynometer";
+                                            equipment = getString(R.string.brd);
                                             break;
                                         case "GRT":
-                                            equipment = "Grip-Tester";
+                                            equipment = getString(R.string.grt);
                                             break;
                                         case "MUM":
-                                            equipment = "Mu-meter";
+                                            equipment = getString(R.string.mum);
                                             break;
                                         case "RFT":
-                                            equipment = "Runway Friction Tester";
+                                            equipment = getString(R.string.rft);
                                             break;
                                         case "SFH":
-                                            equipment = "Surface Friction Tester (High pressure tires)";
+                                            equipment = getString(R.string.sfh);
                                             break;
                                         case "SFL":
-                                            equipment = "Surface Friction Tester (Low pressure tires)";
+                                            equipment = getString(R.string.sfl);
                                             break;
                                         case "SKH":
-                                            equipment = "Skiddometer (High pressure tires)";
+                                            equipment = getString(R.string.skh);
                                             break;
                                         case "SKL":
-                                            equipment = "Skiddometer (Low pressure tires)";
+                                            equipment = getString(R.string.skl);
                                             break;
                                         case "TAP":
-                                            equipment = "Tapleymeter";
+                                            equipment = getString(R.string.tap);
                                             break;
                                         default:
                                             equipment = valH1[1];
@@ -364,13 +405,12 @@ public class codeOACI extends AppCompatActivity {
                                     }
                                 }
                             }
-                            if(equipment != ""){
-                                decodageH = "Treshold: "+thresholdH+ " \nMid runway: "+midH + " \nRoll out: "+outH + " \nequipment: "+equipment;
+                            if(!equipment.equals("")){
+                                decodageH = getString(R.string.braking_act) + getString(R.string.threshold)+ thresholdH + getString(R.string.mid_rwy) + midH + getString(R.string.roll_out) +outH + getString(R.string.equipment) + equipment;
                             }
                             else{
-                                decodageH = "Treshold: "+thresholdH+ " \nMid runway: "+midH + " \nRoll out: "+outH;
+                                decodageH = getString(R.string.braking_act)+  getString(R.string.threshold)+ thresholdH + getString(R.string.mid_rwy) + midH + getString(R.string.roll_out) +outH;
                             }
-
                             letter.add(new SnowtamDecodeObject(decodageH,getDrawable(R.drawable.h)));
                             break;
 
@@ -380,19 +420,19 @@ public class codeOACI extends AppCompatActivity {
                             char lastCharJ = monTableau2.get(i+1).charAt(monTableau2.get(i+1).length());
                             char beforeLastCharJ = monTableau2.get(i+1).charAt(monTableau2.get(i+1).length()-1);
                             if(lastCharJ=='L'){
-                                decodageJ = "Critical snow bank "+valJ[0]+"cm / "+valJ[1].substring(0,valJ[i].length()-1)+"m Left of runway";
+                                decodageJ = getString(R.string.crit_snow_bk) + valJ[0] + getString(R.string.unit_cm) + " / " + valJ[1].substring(0,valJ[i].length()-1) + getString(R.string.unit_m) + getString(R.string.left_rwy);
                                 letter.add(new SnowtamDecodeObject(decodageJ,getDrawable(R.drawable.j)));
                             }
                             else if(lastCharJ=='R' && beforeLastCharJ != 'L'){
-                                decodageJ = "Critical snow bank "+valJ[0]+"cm / "+valJ[1].substring(0,valJ[i].length()-1)+"m Right of runway";
+                                decodageJ = getString(R.string.crit_snow_bk) + valJ[0]+ getString(R.string.unit_cm) + " / " + valJ[1].substring(0,valJ[i].length()-1)+ getString(R.string.unit_m) + getString(R.string.right_rwy);
                                 letter.add(new SnowtamDecodeObject(decodageJ,getDrawable(R.drawable.j)));
                             }
                             else if (lastCharJ=='R' && beforeLastCharJ == 'L'){
-                                decodageJ = "Critical snow bank "+valJ[0]+"cm / "+valJ[1].substring(0,valJ[i].length()-2)+"m Left and Right of runway";
+                                decodageJ = getString(R.string.crit_snow_bk) + valJ[0]+ getString(R.string.unit_cm) + " / " + valJ[1].substring(0,valJ[i].length()-2) + getString(R.string.unit_m) + getString(R.string.left_right_rwy);
                                 letter.add(new SnowtamDecodeObject(decodageJ,getDrawable(R.drawable.j)));
                             }
                             else{
-                                decodageJ = "Critical snow bank "+valJ[0]+"cm / "+valJ[1]+"meters";
+                                decodageJ = getString(R.string.crit_snow_bk) + valJ[0]+ getString(R.string.unit_cm) + " / "+valJ[1]+ getString(R.string.unit_m);
                                 letter.add(new SnowtamDecodeObject(decodageJ,getDrawable(R.drawable.j)));
                             }
                             break;
@@ -400,17 +440,23 @@ public class codeOACI extends AppCompatActivity {
                         case "K)":
                             String decodageK;
                             String[] valK = monTableau2.get(i+1).split(" ");
-                            if (valK[1].equals("L")){
-                                decodageK = "Lights obscured: "+valK[0]+" Left of runway";
-                                letter.add(new SnowtamDecodeObject(decodageK,getDrawable(R.drawable.k)));
-                            }
-                            else if (valK[1].equals("R")){
-                                decodageK = "Lights obscured: "+valK[0]+" Right of runway";
-                                letter.add(new SnowtamDecodeObject(decodageK,getDrawable(R.drawable.k)));
-                            }
-                            else if (valK[1].equals("LR")){
-                                decodageK = "Lights obscured: "+valK[0]+" Left and Right of runway";
-                                letter.add(new SnowtamDecodeObject(decodageK,getDrawable(R.drawable.k)));
+                            switch (valK[1]) {
+                                case "L":
+                                    decodageK = getString(R.string.light_obs) + valK[0] + getString(R.string.left_rwy);
+                                    letter.add(new SnowtamDecodeObject(decodageK, getDrawable(R.drawable.k)));
+                                    break;
+                                case "R":
+                                    decodageK = getString(R.string.light_obs) + valK[0] + getString(R.string.right_rwy);
+                                    letter.add(new SnowtamDecodeObject(decodageK, getDrawable(R.drawable.k)));
+                                    break;
+                                case "LR":
+                                    decodageK = getString(R.string.light_obs) + valK[0] + getString(R.string.left_right_rwy);
+                                    letter.add(new SnowtamDecodeObject(decodageK, getDrawable(R.drawable.k)));
+                                    break;
+                                default:
+                                    decodageK = getString(R.string.no_light_obs);
+                                    letter.add(new SnowtamDecodeObject(decodageK, getDrawable(R.drawable.k)));
+
                             }
                             break;
 
@@ -418,17 +464,17 @@ public class codeOACI extends AppCompatActivity {
                             String decodageL;
                             if (!monTableau2.get(i+1).equals("TOTAL")){
                                 String[] valL = monTableau2.get(i+1).split("/");
-                                decodageL = "Further clearance "+valL[0]+"m / "+valL[1]+"m";
+                                decodageL = getString(R.string.clearance)+ valL[0] + getString(R.string.unit_m) + " / " + valL[1] + getString(R.string.unit_m);
                                 letter.add(new SnowtamDecodeObject(decodageL,getDrawable(R.drawable.l)));
                             }
                             else{
-                                decodageL = "Further clearance total";
+                                decodageL = getString(R.string.clearance_tot);
                                 letter.add(new SnowtamDecodeObject(decodageL,getDrawable(R.drawable.l)));
                             }
                             break;
 
                         case "M)":
-                            String decodageM = "Anticipated time of completion "+monTableau2.get(i+1).substring(0,2)+":"+monTableau2.get(i+1).substring(2,4)+" UTC";
+                            String decodageM = getString(R.string.time_completion) + monTableau2.get(i+1).substring(0,2)+":"+monTableau2.get(i+1).substring(2,4)+" UTC";
                             letter.add(new SnowtamDecodeObject(decodageM,getDrawable(R.drawable.m)));
                             break;
 
@@ -436,57 +482,57 @@ public class codeOACI extends AppCompatActivity {
                             String textN ="";
                             String decodageN;
                             if(monTableau2.get(i+1).contains("NIL")){
-                                textN = textN +"Taxiway cleared and dry";
+                                textN = textN + getString(R.string.taxi) + getString(R.string.clear_dry) ;
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("1")){
-                                textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Damp";
+                                textN = textN + getString(R.string.taxi) + monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.damp);
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("2")){
-                                textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Wet or water patches";
+                                textN = textN + getString(R.string.taxi) +monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.wet);
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("3")){
-                                textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Rimes or frost covered";
+                                textN = textN + getString(R.string.taxi) +monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.rimes);
                                // letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("4")){
-                                textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Dry snow";
+                                textN = textN + getString(R.string.taxi) +monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.dry_snow);
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("5")){
-                                textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Wet snow";
+                                textN = textN + getString(R.string.taxi) +monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.wet_snow);
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("6")){
-                                textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Slush";
+                                textN = textN + getString(R.string.taxi) +monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.slush);
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("7")){
                                 if (textN.equals("")){
-                                    textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Ice";
+                                    textN = textN + getString(R.string.taxi) + monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.ice);
                                 }
                                 else{
-                                    textN = textN +"on top of Ice";
+                                    textN = textN + getString(R.string.top_ice);
                                 }
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("8")){
                                 if (textN.equals("")){
-                                    textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Compacted or rolled snow";
+                                    textN = textN + getString(R.string.taxi) +monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.rolled_snow);
                                 }
                                 else{
-                                    textN = textN +"on top of compacted snow";
+                                    textN = textN + getString(R.string.top_rolled);
                                 }
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).contains("9")){
-                                textN = textN +"Taxiway "+monTableau2.get(i+1).substring(0,1)+": Frozen ruts or ridges";
+                                textN = textN + getString(R.string.taxi) +monTableau2.get(i+1).substring(0,1)+": " + getString(R.string.ridges);
                                // letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             if(monTableau2.get(i+1).equals("NO")){
-                                textN = textN +"No taxiway available";
+                                textN = textN + getString(R.string.no_taxi);
                                 //letter.add(new SnowtamDecodeObject(decodageN,getDrawable(R.drawable.n)));
                             }
                             decodageN = textN;
@@ -495,7 +541,7 @@ public class codeOACI extends AppCompatActivity {
 
                         case "P)":
                             if (monTableau2.get(i+1).contains("YES")){
-                                String decodageP = "Snow banks: YES Space " + monTableau2.get(i+1).substring(3)+"m";
+                                String decodageP =  getString(R.string.snow_banks)  + monTableau2.get(i+1).substring(3)+ getString(R.string.unit_m) ;
                                 letter.add(new SnowtamDecodeObject(decodageP,getDrawable(R.drawable.p)));
                             }
 
@@ -505,53 +551,53 @@ public class codeOACI extends AppCompatActivity {
                             String[] valR = monTableau2.get(i+1).split(" ");
                             for (int j=0; j<valR.length; j++){
                                 if(valR[j].contains("NIL")){
-                                    textR +=  "Cleared and dry";
+                                    textR +=   getString(R.string.clear_dry) ;
                                 }
                                 if(valR[j].contains("1")){
-                                    textR += "Damp";
+                                    textR +=  getString(R.string.damp) ;
                                 }
                                 if(valR[j].contains("2")){
-                                    textR += "Wet or water patches";
+                                    textR +=  getString(R.string.wet) ;
                                 }
                                 if(valR[j].contains("3")){
-                                    textR +=" Rime or frost covered";
+                                    textR +=  getString(R.string.rimes) ;
                                 }
                                 if(valR[j].contains("4")){
-                                    textR +=  "Dry snow";
+                                    textR +=   getString(R.string.dry_snow) ;
                                 }
                                 if(valR[j].contains("5")){
-                                    textR += "Wet snow";
+                                    textR +=  getString(R.string.wet_snow) ;
                                 }
                                 if(valR[j].contains("6")){
-                                    textR += "Slush";
+                                    textR +=  getString(R.string.slush) ;
                                 }
                                 if(valR[j].contains("7")){
                                     if(textR.equals("")){
-                                        textR += "Ice";
+                                        textR +=  getString(R.string.ice) ;
                                     }
                                     else{
-                                        textR += " on top of Ice";
+                                        textR +=  getString(R.string.top_ice) ;
                                     }
 
                                 }
                                 if(valR[j].contains("8")){
                                     if(textR.equals("")){
-                                        textR += " Compact or rolled snow";
+                                        textR +=  getString(R.string.rolled_snow) ;
                                     }
                                     else{
-                                        textR += " on top of compact or rolled snow";
+                                        textR +=  getString(R.string.top_rolled) ;
                                     }
 
                                 }
                                 if(valR[j].contains("9")){
-                                    textR += " Frozen ruts or ridges";
+                                    textR +=  getString(R.string.ridges) ;
                                 }
                                 if(valR[j].equals("NO")){
                                     if (valR.length>=2){
-                                        textR += "Parking "+valR[j-1]+" Unusable";
+                                        textR +=  getString(R.string.parking) +valR[j-1] + getString(R.string.unusable) ;
                                     }
                                     else {
-                                        textR += "Parkings unusable";
+                                        textR +=  getString(R.string.parking_unusable) ;
                                     }
                                 }
                             }
@@ -560,12 +606,53 @@ public class codeOACI extends AppCompatActivity {
                             break;
 
                         case "S)":
-                            String decodageS = "Next observation "+monTableau2.get(i+1).substring(2,4)+ "/" + monTableau2.get(i+1).substring(0,2) + " at " + monTableau2.get(i+1).substring(4,6) +":"+monTableau2.get(i+1).substring(6,8)+" UTC";
+                            String monthNumberS = monTableau2.get(i+1).substring(0,2);
+                            String monthS = "";
+                            switch (monthNumberS){
+                                case "01":
+                                    monthS = getString(R.string.month01);
+                                    break;
+                                case "02":
+                                    monthS = getString(R.string.month02);
+                                    break;
+                                case "03":
+                                    monthS = getString(R.string.month03);
+                                    break;
+                                case "04":
+                                    monthS = getString(R.string.month04);
+                                    break;
+                                case "05":
+                                    monthS = getString(R.string.month05);
+                                    break;
+                                case "06":
+                                    monthS = getString(R.string.month06);
+                                    break;
+                                case "07":
+                                    monthS = getString(R.string.month07);
+                                    break;
+                                case "08":
+                                    monthS = getString(R.string.month08);
+                                    break;
+                                case "09":
+                                    monthS = getString(R.string.month09);
+                                    break;
+                                case "10":
+                                    monthS = getString(R.string.month10);
+                                    break;
+                                case "11":
+                                    monthS = getString(R.string.month11);
+                                    break;
+                                case "12":
+                                    monthS = getString(R.string.month12);
+                                    break;
+                            }
+
+                            String decodageS =  getString(R.string.next_obs)  +monTableau2.get(i+1).substring(2,4) + monthS + getString(R.string.at) + monTableau2.get(i+1).substring(4,6) +":"+monTableau2.get(i+1).substring(6,8)+" UTC";
                             letter.add(new SnowtamDecodeObject(decodageS,getDrawable(R.drawable.s)));
                             break;
 
                         case "T)":
-                            String decodageT = "";
+                            String decodageT = getString(R.string.notes);
                             int j = i;
                             while(!monTableau2.get(j + 1).equals(")")){
                                 decodageT = decodageT + monTableau2.get(j+1)+ " ";

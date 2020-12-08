@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">Starsnow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <string name="satellite">Satellite</string>
+    <string name="normal">Normal</string>
+    <string name="hybride">Hybride</string>
+
+    <string name="month01">" Janvier"</string>
+    <string name="month02">" Fevrier"</string>
+    <string name="month03">" Mars"</string>
+    <string name="month04">" Avril"</string>
+    <string name="month05">" Mai"</string>
+    <string name="month06">" Juin"</string>
+    <string name="month07">" Juillet"</string>
+    <string name="month08">" Août"</string>
+    <string name="month09">" Septembre"</string>
+    <string name="month10">" Octobre"</string>
+    <string name="month11">" Novembre"</string>
+    <string name="month12">" Decembre"</string>
+    <string name="at">" à "</string>
+
+    <string name="runway">"Piste "</string>
+
+    <string name="left">Gauche</string>
+    <string name="right">Droite</string>
+    <string name="left_rwy">" Côté gauche piste "</string>
+    <string name="right_rwy">" Côté droit piste "</string>
+    <string name="left_right_rwy">" Côtés droit et gauche piste "</string>
+
+    <string name="clr_rwy_lenght">"Longueur de piste dégagé : "</string>
+    <string name="clr_rwy_width">"Largeur de piste dégagé : "</string>
+
+    <string name="clear_dry">"Dégagée et sèche "</string>
+    <string name="wet">"Mouillé ou flaques d'eau "</string>
+    <string name="damp">"Humide "</string>
+    <string name="rimes">"Givre ou gelée blanche "</string>
+    <string name="dry_snow">"Neige sèche "</string>
+    <string name="wet_snow">"Neige mouillée "</string>
+    <string name="slush">"Neige fondante "</string>
+    <string name="ice">"Glace "</string>
+    <string name="rolled_snow">"Neige compactée "</string>
+    <string name="ridges">"Ornières et Arrêtes "</string>
+    <string name="top_ice">sur de la galce</string>
+    <string name="top_rolled">sur de la neige compactée</string>
+
+    <string name="threshold">"Début de piste : "</string>
+    <string name="mid_rwy">"\nMilieu de piste : "</string>
+    <string name="roll_out">"\nFin de piste : "</string>
+
+    <string name="unit_m">"m "</string>
+    <string name="unit_cm">"cm "</string>
+    <string name="unit_mm">"mm "</string>
+
+    <string name="mean_depth">"Épaisseur moyenne\n"</string>
+
+    <string name="medium_poor">"Moyen, médiocre "</string>
+    <string name="medium">"Moyen "</string>
+    <string name="medium_good">"Moyen, bon "</string>
+    <string name="good">"Bon "</string>
+    <string name="poor">"Médiocre "</string>
+
+    <string name="equipment">"\nInstrument de mesure : "</string>
+
+    <string name="brd">Brakemeter-Dynometer</string>
+    <string name="grt">Testeur de grip</string>
+    <string name="mum">Mu-mètre</string>
+    <string name="rft">Testeur de friction de piste</string>
+    <string name="sfh">Testeur de surface de friction (pneu haute pression)</string>
+    <string name="sfl">Testeur de surface de friction (pneu basse pression)</string>
+    <string name="skh">Skiddomètre (pneu haute pression)</string>
+    <string name="skl">Skiddomètre (pneu basse pression)</string>
+    <string name="tap">Compteur Tapley</string>
+    <string name="braking_act">"Coefficient de frottement\n"</string>
+
+    <string name="crit_snow_bk">"Congères critiques "</string>
+
+    <string name="light_obs">"Feux de piste obscurcis : "</string>
+    <string name="no_light_obs">"Aucun feux de piste obscurcis "</string>
+
+    <string name="clearance">"Nouveau déblaiement sera effectué sur "</string>
+    <string name="clearance_tot">"Nouveau déblaiement sur toute la longueur et toute la largeur "</string>
+
+    <string name="time_completion">"Qu'on espère terminé à  "</string>
+
+    <string name="taxi">"Taxiway "</string>
+    <string name="no_taxi">Pas de taxiways utilisable</string>
+
+    <string name="snow_banks">"Présence de bancs de neige sur les voies de circulations : espacement "</string>
+
+    <string name="parking">"Parking "</string>
+    <string name="unusable">Inutilisable</string>
+    <string name="parking_unusable">Parkings inutilisables</string>
+
+    <string name="next_obs">"Prochaine observation prévue pour le "</string>
+
+    <string name="notes">"Remarque(s) : "</string>
+
+</resources>
