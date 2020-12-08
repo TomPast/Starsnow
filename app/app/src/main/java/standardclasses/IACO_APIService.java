@@ -51,7 +51,7 @@ public class IACO_APIService extends Application {
                                 i++;
                             }
                             if(found == false){
-                                callback.onSuccess(Resources.getSystem().getString(R.string.noSnowtam));
+                                callback.onSuccess("no snowtam");
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -60,7 +60,7 @@ public class IACO_APIService extends Application {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        callback.onSuccess(Resources.getSystem().getString(R.string.APIProblem));
+                        callback.onSuccess("pb api");
                         System.out.println("That didn't work!");
                     }
                 });

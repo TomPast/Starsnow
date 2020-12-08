@@ -38,9 +38,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0 :
-                return Resources.getSystem().getString(R.string.code);
+                return "codé";
             case 1 :
-                return Resources.getSystem().getString(R.string.decode);
+                return "décodé";
         }
         return null;
     }

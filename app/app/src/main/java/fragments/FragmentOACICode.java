@@ -21,7 +21,7 @@ public class FragmentOACICode extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_oaci_code, container, false);
         TextView txt = (TextView) view.findViewById(R.id.section_label);
-        txt.setText(Resources.getSystem().getString(R.string.chargementSnowtam));
+        txt.setText("chargement snowtam");
         return view;
     }
 }

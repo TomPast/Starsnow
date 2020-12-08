@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import Adapter.ViewPagerAdapter;
 import standardclasses.Aeroport;
 import standardclasses.IACO_APIService;
+import standardclasses.Snowtam;
 import standardclasses.VolleyCallback;
 import standardclasses.VolleyCallback2;
 
@@ -120,11 +121,6 @@ public class codeOACI extends AppCompatActivity {
                 System.out.println(currentIndex);
                 currentAeroport = AeroportList[currentIndex];
                 updateView(currentAeroport);
-            }
-
-            @Override
-            public void onError(String results) {
-                //
             }
         });
 
