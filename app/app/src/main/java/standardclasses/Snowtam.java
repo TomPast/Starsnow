@@ -1,8 +1,9 @@
 package standardclasses;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Snowtam {
+public class Snowtam implements Serializable {
     private String OACI;
     private String plainCodedSnowtam;
     private HashMap<String, String> DecodedSnowtam = new HashMap<String, String>();

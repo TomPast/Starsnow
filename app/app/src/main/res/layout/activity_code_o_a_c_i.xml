@@ -40,13 +40,13 @@
                 android:backgroundTint="#FFFFFF"
                 android:clickable="true"
                 android:contentDescription="LeftButton"
-                android:tint="#4C9AF9"
                 app:backgroundTint="#FFFFFF"
                 app:fabSize="mini"
                 app:layout_constraintEnd_toStartOf="@+id/aeroportName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/abc_vector_test" />
+                app:srcCompat="@drawable/abc_vector_test"
+                app:tint="#2D6AB3" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatingRight"
@@ -58,13 +58,13 @@
                 android:contentDescription="RightButton"
                 android:scaleX="-1"
                 android:scaleY="-1"
-                android:tint="#4C9AF9"
                 app:backgroundTint="#FFFFFF"
                 app:fabSize="mini"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/aeroportName"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/abc_vector_test" />
+                app:srcCompat="@drawable/abc_vector_test"
+                app:tint="#0376FF" />
 
 
             <LinearLayout
@@ -83,7 +83,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/lato_bold"
                     android:gravity="center"
-                    android:text="Latitude"
+                    android:text="@string/latitude"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />
 
@@ -95,7 +95,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/lato_bold"
                     android:gravity="center"
-                    android:text="Longitude"
+                    android:text="@string/longitude"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />
 
@@ -180,8 +180,10 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:clickable="true"
+        android:contentDescription="Localisation Icon"
+        app:backgroundTint="#D64F45"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/satellite" />
+        app:srcCompat="@android:drawable/ic_dialog_map" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

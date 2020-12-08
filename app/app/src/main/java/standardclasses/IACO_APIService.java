@@ -2,6 +2,7 @@ package standardclasses;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -10,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.starsnow.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +22,7 @@ import java.text.DecimalFormat;
 public class IACO_APIService extends Application {
     public Context c;
     public RequestQueue queue;
-    public String API_KEY = "737c6d60-34a3-11eb-9b4d-754e522c3669";
+    public String API_KEY = "362e3af0-396d-11eb-8bf6-2bfe29fcb49c";
 
     public IACO_APIService(Context c){
         this.c = c;
@@ -49,7 +51,7 @@ public class IACO_APIService extends Application {
                                 i++;
                             }
                             if(found == false){
-                                callback.onSuccess("PAS DE SNOWTAM");
+                                callback.onSuccess("no snowtam");
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -58,7 +60,7 @@ public class IACO_APIService extends Application {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        callback.onSuccess("Problème appel API");
+                        callback.onSuccess("pb api");
                         System.out.println("That didn't work!");
                     }
                 });

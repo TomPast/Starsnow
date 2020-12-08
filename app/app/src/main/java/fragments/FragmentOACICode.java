@@ -1,5 +1,6 @@
 package fragments;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,7 @@ public class FragmentOACICode extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_oaci_code, container, false);
         TextView txt = (TextView) view.findViewById(R.id.section_label);
-        txt.setText("Chargement du snowtam...");
+        txt.setText("chargement snowtam");
         return view;
     }
 }
