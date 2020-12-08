@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,8 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import Adapter.ViewPagerAdapter;
 import fragments.FragmentOACICode;
@@ -42,6 +45,8 @@ public class codeOACI extends AppCompatActivity {
     private TextView Latitude;
 
     private Aeroport currentAeroport;
+    private Aeroport[] AeroportList;
+    int currentIndex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,39 +58,84 @@ public class codeOACI extends AppCompatActivity {
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         tabLayout.post(() -> tabLayout.setupWithViewPager(viewPager));
 
-        String[] aeroport = (String[]) getIntent().getSerializableExtra("codes");
-
-
+        ArrayList<String> aeroports = (ArrayList<String>) getIntent().getSerializableExtra("codes");
+        AeroportList = new Aeroport[aeroports.size()];
 
         IACO_APIService API = new IACO_APIService(this.getApplicationContext());
+        int i = 0;
+        currentIndex = 0;
+        for( String value : aeroports ) {
+            AeroportList[i] = new Aeroport(value);
 
-        API.getSnowtam(aeroport[0], new VolleyCallback() {
+            int finalI = i;
+            API.getSnowtam(value, new VolleyCallback() {
+                @Override
+                public void onSuccess(String result) {
+                    AeroportList[finalI].setSnowtam(new Snowtam(value, result));
+                    if(finalI == 0){
+                        updateSnowtam(result);
+                    }
+
+                }
+            });
+
+            API.getAeroport(value, new VolleyCallback2() {
+                @Override
+                public void onSuccess(Aeroport results) {
+                    AeroportList[finalI].setNom(results.getNom());
+                    AeroportList[finalI].setLatitude(results.getLatitude());
+                    AeroportList[finalI].setLongitude(results.getLongitude());
+                    if(finalI == 0){
+                        updateAirportInfo(results);
+                    }
+
+                }
+
+                @Override
+                public void onError(String results) {
+                    //ERREUR CODE OACI PAS BON
+                }
+            });
+
+            if(i == 0) {
+                currentAeroport = AeroportList[0];
+            }
+            i++;
+        }
+
+        // Bouton flèche de gauche pour changer d'aéroport
+        FloatingActionButton floatingButtonLeft = (FloatingActionButton) findViewById(R.id.floatingLeft);
+        floatingButtonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(String result) {
-                System.out.println(result);
-                FragmentOne = (TextView) findViewById(R.id.section_label);
-                FragmentOne.setText(result);
+            public void onClick(View v) {
+                System.out.println(currentIndex);
+                currentIndex = currentIndex-1;
+                if(currentIndex<0){
+                    currentIndex = aeroports.size()-1;
+                }
+                System.out.println(currentIndex);
+                currentAeroport = AeroportList[currentIndex];
+                updateView(currentAeroport);
             }
         });
 
-        API.getAeroport(aeroport[0], new VolleyCallback2() {
+        // Bouton flèche de droite pour changer d'aéroport
+        FloatingActionButton floatingButtonRight = (FloatingActionButton) findViewById(R.id.floatingRight);
+        floatingButtonRight.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(Aeroport results) {
-                currentAeroport = results;
-                System.out.println(results.getNom());
-                AeroportName = (TextView) findViewById(R.id.aeroportName);
-                AeroportName.setText(results.getNom());
-
-                Longitude = (TextView) findViewById(R.id.longitudeValue);
-                Longitude.setText( String.valueOf(results.getLongitude()));
-
-                Latitude = (TextView) findViewById(R.id.latitudeValue);
-                Latitude.setText( String.valueOf(results.getLatitude()));
+            public void onClick(View v) {
+                System.out.println(currentIndex);
+                currentIndex++;
+                if(currentIndex>(aeroports.size()-1)){
+                    currentIndex = 0;
+                }
+                System.out.println(currentIndex);
+                currentAeroport = AeroportList[currentIndex];
+                updateView(currentAeroport);
             }
         });
 
-        currentAeroport = new Aeroport("OKIE", "Charles de gaulles", 11.08388888888888, 60.2027777777777);
-
+        //Bouton localisation pour afficher la page de google map
         FloatingActionButton floatingButtonLocalisation = (FloatingActionButton) findViewById(R.id.floatingButtonLocalisation);
         floatingButtonLocalisation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,4 +148,37 @@ public class codeOACI extends AppCompatActivity {
     }
 
 
+    //Actualisation totale de la vue (nom Aeroport, Longitude/Latitude + snowtam)
+    public void updateView(Aeroport aeroport){
+        FragmentOne = (TextView) findViewById(R.id.section_label);
+        FragmentOne.setText(aeroport.getSnowtam().getPlainCodedSnowtam());
+
+        AeroportName = (TextView) findViewById(R.id.aeroportName);
+        AeroportName.setText(aeroport.getNom());
+
+        Longitude = (TextView) findViewById(R.id.longitudeValue);
+        Longitude.setText( String.valueOf(aeroport.getLongitude()));
+
+        Latitude = (TextView) findViewById(R.id.latitudeValue);
+        Latitude.setText( String.valueOf(aeroport.getLatitude()));
+
+    }
+
+    //Actualisation du snowtam dans la vue
+    public void updateSnowtam(String Snowtam){
+        FragmentOne = (TextView) findViewById(R.id.section_label);
+        FragmentOne.setText(Snowtam);
+    }
+
+    //Actualisation des informations de l'aéroport dans la vue
+    public void updateAirportInfo(Aeroport info){
+        AeroportName = (TextView) findViewById(R.id.aeroportName);
+        AeroportName.setText(info.getNom());
+
+        Longitude = (TextView) findViewById(R.id.longitudeValue);
+        Longitude.setText( String.valueOf(info.getLongitude()));
+
+        Latitude = (TextView) findViewById(R.id.latitudeValue);
+        Latitude.setText( String.valueOf(info.getLatitude()));
+    }
 }

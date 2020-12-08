@@ -1,8 +1,12 @@
 package Adapter;
 
+import android.content.res.Resources;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.starsnow.R;
 
 import fragments.FragmentOACICode;
 import fragments.FragmentOACIDecode;
@@ -34,9 +38,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0 :
-                return "Codé";
+                return Resources.getSystem().getString(R.string.code);
             case 1 :
-                return "Décodé";
+                return Resources.getSystem().getString(R.string.decode);
         }
         return null;
     }
