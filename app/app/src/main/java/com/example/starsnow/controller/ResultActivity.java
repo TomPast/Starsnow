@@ -2,6 +2,7 @@ package com.example.starsnow.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,12 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.starsnow.R;
+import com.example.starsnow.sampleOACI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.example.starsnow.controller.Adapter.DecodeAdapter;
 import com.example.starsnow.controller.Adapter.ViewPagerAdapter;
@@ -26,7 +30,7 @@ import com.example.starsnow.model.Snowtam;
 import com.example.starsnow.model.SnowtamDecodeObject;
 import com.example.starsnow.APIService.VolleyCallback2;
 
-public class codeOACI extends AppCompatActivity {
+public class ResultActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private TextView FragmentOne;
@@ -38,15 +42,16 @@ public class codeOACI extends AppCompatActivity {
     private Aeroport currentAeroport;
     private Aeroport[] AeroportList;
     int currentIndex;
+    int OACIsize;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_code_o_a_c_i);
+        setContentView(R.layout.activity_result);
 
         tabLayout = findViewById(R.id.tab);
         viewPager =  findViewById(R.id.viewPager);
 
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), this));
         tabLayout.post(() -> tabLayout.setupWithViewPager(viewPager));
 
 
@@ -55,17 +60,30 @@ public class codeOACI extends AppCompatActivity {
         ArrayList<String> OACICode = (ArrayList<String>) getIntent().getSerializableExtra("codes");
 
 
+        //Décommenter cette partie pour avoir les snowtam en dur (sans passer par l'API) + commenter la partie du dessous (partie de l'API : de la ligne 77 à 143)
+        /*
+        new android.os.Handler().postDelayed(
+            () -> {
+                AeroportList = new sampleOACI().aeroports;
+                currentIndex = 0;
+                currentAeroport = AeroportList[0];
+                updateView(currentAeroport);
+                OACIsize = 4;
+            }, 1000);
+        */
+
+
+
         //Appel API pour récupération du snowtam et des informations sur les aéroports dans une ArrayList d'aéroport
         AeroportList = new Aeroport[OACICode.size()];
         int i = 0;
         currentIndex = 0;
-
+        OACIsize = OACICode.size();
         //On instancie le service d'appel à l'API
         IACO_APIService API = new IACO_APIService(this.getApplicationContext());
 
         //Pour chaque code OACI on fait 2 Appels API
         for( String value : OACICode ) {
-
             //On créé un nouvel objet dans notre ArrayList par code OACI
             AeroportList[i] = new Aeroport(value);
 
@@ -93,7 +111,7 @@ public class codeOACI extends AppCompatActivity {
 
                 @Override
                 public void onError(String results) {
-                    //ERREUR CODE OACI PAS BON
+                    //ERREUR CODE OACI PAS BON : -> Deja vérifié à l'activité précédente
                 }
             });
 
@@ -122,13 +140,15 @@ public class codeOACI extends AppCompatActivity {
             }
         });
 
+
+
         // Bouton flèche de gauche pour changer d'aéroport
         FloatingActionButton floatingButtonLeft = findViewById(R.id.floatingLeft);
         floatingButtonLeft.setOnClickListener(v -> {
             //On décrémente l'index de l'aéroport à afficher dans la liste
             currentIndex = currentIndex-1;
             if(currentIndex<0){
-                currentIndex = OACICode.size()-1;
+                currentIndex = OACIsize-1;
             }
             currentAeroport = AeroportList[currentIndex];
             updateView(currentAeroport);
@@ -140,7 +160,7 @@ public class codeOACI extends AppCompatActivity {
         floatingButtonRight.setOnClickListener(v -> {
             //On incrémente l'index de l'aéroport à afficher dans la liste
             currentIndex++;
-            if(currentIndex>(OACICode.size()-1)){
+            if(currentIndex>(OACIsize-1)){
                 currentIndex = 0;
             }
             currentAeroport = AeroportList[currentIndex];
@@ -151,7 +171,7 @@ public class codeOACI extends AppCompatActivity {
         //Bouton localisation pour afficher la page de google map
         FloatingActionButton floatingButtonLocalisation = findViewById(R.id.floatingButtonLocalisation);
         floatingButtonLocalisation.setOnClickListener(v -> {
-            Intent localisation = new Intent(codeOACI.this, MapActivity.class);
+            Intent localisation = new Intent(ResultActivity.this, MapActivity.class);
             //On passe en extra, l'aéroport courant
             localisation.putExtra("aeroport",currentAeroport);
             startActivityForResult(localisation, 500);

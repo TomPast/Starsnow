@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class IACO_APIService extends Application {
     public Context c;
     public RequestQueue queue;
-    public String API_KEY = "34ea4c90-3a5a-11eb-97e5-85d18d462712";
+    public String API_KEY = "235750a0-3b1c-11eb-906e-773d4e58062b";
 
     public IACO_APIService(Context c){
         this.c = c;
@@ -26,7 +26,7 @@ public class IACO_APIService extends Application {
 
     //Appel API pour récupérer le snowtam (premier trouvé) à partir du code OACI
     public void getSnowtam(String OACI, final VolleyCallback callback){
-        String url = "https://applications.icao.int/dataservices/api/notams-realtime-list?api_key="+API_KEY+"&format=json&criticality=50&locations="+OACI;
+        String url = "https://applications.icao.int/dataservices/api/notams-realtime-list?api_key="+API_KEY+"&format=json&criticality=1&locations="+OACI;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 response -> {
                     try {
@@ -71,8 +71,8 @@ public class IACO_APIService extends Application {
                             String aeroportName = aeroportEntry.getString("airportName");
                             JSONArray coordinates = aeroportEntry.getJSONObject("geometry").getJSONArray("coordinates");
 
-                            double latitude = (double) coordinates.get(0);
-                            double longitude = (double) coordinates.get(1);
+                            double latitude = (double) coordinates.get(1);
+                            double longitude = (double) coordinates.get(0);
 
                             callback.onSuccess(new Aeroport(OACI, aeroportName,latitude,longitude));
                         } catch (JSONException e) {

@@ -57,7 +57,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     public void onMapReady(GoogleMap gMap) {
         this.googleMap = gMap;
 
-        LatLng Airport = new LatLng(aeroport.getLongitude(), aeroport.getLatitude());
+        LatLng Airport = new LatLng(aeroport.getLatitude(), aeroport.getLongitude());
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         this.googleMap.addMarker(new MarkerOptions().position(Airport).title(aeroport.getNom()));
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Airport,14));

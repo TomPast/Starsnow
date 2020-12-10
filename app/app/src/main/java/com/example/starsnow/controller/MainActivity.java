@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity{
     View.OnClickListener handlerValider = new View.OnClickListener() {
         public void onClick(View v) {
             Log.d("MSG",codes.toString());
-            Intent codeOACI = new Intent(MainActivity.this, codeOACI.class);
+            Intent codeOACI = new Intent(MainActivity.this, ResultActivity.class);
             codeOACI.putExtra("codes",codes);
             startActivity(codeOACI);
         }
