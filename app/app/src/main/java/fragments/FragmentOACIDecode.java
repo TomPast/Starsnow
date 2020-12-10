@@ -18,7 +18,7 @@ public class FragmentOACIDecode extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_oaci_decode, container, false);
-        RecyclerView txt = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView rv = view.findViewById(R.id.recyclerView);
         return view;
     }
 }

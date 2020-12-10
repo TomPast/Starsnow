@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Snowtam implements Serializable {
     private String OACI;
     private String plainCodedSnowtam;
-    private HashMap<String, String> DecodedSnowtam = new HashMap<String, String>();
+    private SnowtamDecodeObject DecodedSnowtam;
 
     public Snowtam(String codeOACI){
         this.setOACI(OACI);
@@ -33,11 +33,11 @@ public class Snowtam implements Serializable {
         this.plainCodedSnowtam = plainCodedSnowtam;
     }
 
-    public HashMap<String, String> getDecodedSnowtam() {
+    public SnowtamDecodeObject getDecodedSnowtam() {
         return DecodedSnowtam;
     }
 
-    public void setDecodedSnowtam(HashMap<String, String> decodedSnowtam) {
+    public void setDecodedSnowtam(SnowtamDecodeObject decodedSnowtam) {
         DecodedSnowtam = decodedSnowtam;
     }
 }

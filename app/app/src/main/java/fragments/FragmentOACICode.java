@@ -18,10 +18,9 @@ public class FragmentOACICode extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_oaci_code, container, false);
-        TextView txt = (TextView) view.findViewById(R.id.section_label);
-        txt.setText("chargement snowtam");
+        TextView txt = view.findViewById(R.id.section_label);
+        txt.setText(getString(R.string.chargementSnowtam));
         return view;
     }
 }

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity{
         // Init liste des codes qui sera envoyé dans la prochaine activité
         codes = new ArrayList();
 
-        // Recupere l'id des elements graphiques
+        // Recupère l'id des elements graphiques
         cardAerop1 = findViewById(R.id.card_aerop1);
         cardAerop2 = findViewById(R.id.card_aerop2);
         cardAerop3 = findViewById(R.id.card_aerop3);
