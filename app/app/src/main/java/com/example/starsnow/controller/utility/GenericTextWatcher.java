@@ -1,9 +1,11 @@
-package com.example.starsnow;
+package com.example.starsnow.controller.utility;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.starsnow.R;
 
 public class GenericTextWatcher implements TextWatcher {
     private final EditText[] editText;

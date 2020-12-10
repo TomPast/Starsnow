@@ -1,4 +1,4 @@
-package standardclasses;
+package com.example.starsnow.APIService;
 
 import android.app.Application;
 import android.content.Context;
@@ -8,6 +8,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.starsnow.R;
+import com.example.starsnow.model.Aeroport;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,7 +17,7 @@ import org.json.JSONObject;
 public class IACO_APIService extends Application {
     public Context c;
     public RequestQueue queue;
-    public String API_KEY = "265a1e80-3a5a-11eb-97e5-85d18d462712";
+    public String API_KEY = "34ea4c90-3a5a-11eb-97e5-85d18d462712";
 
     public IACO_APIService(Context c){
         this.c = c;

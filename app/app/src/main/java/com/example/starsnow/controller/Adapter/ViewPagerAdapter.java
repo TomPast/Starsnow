@@ -1,15 +1,11 @@
-package Adapter;
-
-import android.content.res.Resources;
+package com.example.starsnow.controller.Adapter;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.starsnow.R;
-
-import fragments.FragmentOACICode;
-import fragments.FragmentOACIDecode;
+import com.example.starsnow.controller.fragments.FragmentOACICode;
+import com.example.starsnow.controller.fragments.FragmentOACIDecode;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter{
     public ViewPagerAdapter(FragmentManager fm) {

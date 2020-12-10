@@ -1,7 +1,6 @@
-package standardclasses;
+package com.example.starsnow.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 public class Snowtam implements Serializable {
     private String OACI;

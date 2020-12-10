@@ -1,4 +1,4 @@
-package com.example.starsnow;
+package com.example.starsnow.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.starsnow.controller.utility.GenericTextWatcher;
+import com.example.starsnow.R;
+
 import java.util.ArrayList;
 
-import standardclasses.Aeroport;
-import standardclasses.IACO_APIService;
-import standardclasses.VolleyCallback2;
+import com.example.starsnow.model.Aeroport;
+import com.example.starsnow.APIService.IACO_APIService;
+import com.example.starsnow.APIService.VolleyCallback2;
 
 public class MainActivity extends AppCompatActivity{
 

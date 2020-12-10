@@ -1,4 +1,4 @@
-package standardclasses;
+package com.example.starsnow.model;
 
 import java.io.Serializable;
 

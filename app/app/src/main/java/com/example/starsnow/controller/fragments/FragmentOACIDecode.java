@@ -1,26 +1,24 @@
-package fragments;
+package com.example.starsnow.controller.fragments;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.starsnow.R;
 
-public class FragmentOACICode extends Fragment {
-    public FragmentOACICode(){
+public class FragmentOACIDecode extends Fragment {
+    public FragmentOACIDecode(){
 
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_oaci_code, container, false);
-        TextView txt = view.findViewById(R.id.section_label);
-        txt.setText(getString(R.string.chargementSnowtam));
+        View view = inflater.inflate(R.layout.fragment_oaci_decode, container, false);
+        RecyclerView rv = view.findViewById(R.id.recyclerView);
         return view;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.starsnow;
+package com.example.starsnow.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.starsnow.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -17,13 +18,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import Adapter.DecodeAdapter;
-import Adapter.ViewPagerAdapter;
-import standardclasses.Aeroport;
-import standardclasses.IACO_APIService;
-import standardclasses.Snowtam;
-import standardclasses.SnowtamDecodeObject;
-import standardclasses.VolleyCallback2;
+import com.example.starsnow.controller.Adapter.DecodeAdapter;
+import com.example.starsnow.controller.Adapter.ViewPagerAdapter;
+import com.example.starsnow.model.Aeroport;
+import com.example.starsnow.APIService.IACO_APIService;
+import com.example.starsnow.model.Snowtam;
+import com.example.starsnow.model.SnowtamDecodeObject;
+import com.example.starsnow.APIService.VolleyCallback2;
 
 public class codeOACI extends AppCompatActivity {
     private TabLayout tabLayout;

@@ -1,4 +1,4 @@
-package com.example.starsnow;
+package com.example.starsnow.controller.utility;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
