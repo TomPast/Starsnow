@@ -72,8 +72,6 @@ public class ResultActivity extends AppCompatActivity {
             }, 1000);
         */
 
-
-
         //Appel API pour récupération du snowtam et des informations sur les aéroports dans une ArrayList d'aéroport
         AeroportList = new Aeroport[OACICode.size()];
         int i = 0;
