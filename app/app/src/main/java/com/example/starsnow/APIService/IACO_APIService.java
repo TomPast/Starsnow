@@ -17,11 +17,7 @@ import org.json.JSONObject;
 public class IACO_APIService extends Application {
     public Context c;
     public RequestQueue queue;
-<<<<<<< HEAD:app/app/src/main/java/standardclasses/IACO_APIService.java
-    public String API_KEY = "737c6d60-34a3-11eb-9b4d-754e522c3669";
-=======
     public String API_KEY = "235750a0-3b1c-11eb-906e-773d4e58062b";
->>>>>>> main:app/app/src/main/java/com/example/starsnow/APIService/IACO_APIService.java
 
     public IACO_APIService(Context c){
         this.c = c;
