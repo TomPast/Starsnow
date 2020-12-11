@@ -31,7 +31,7 @@ public class DecodeAdapter extends RecyclerView.Adapter<MyViewHolder>{
         return new MyViewHolder(view);
     }
 
-    //c'est ici que nous allons remplir notre card avec le texte/image de chaque MyObjects
+    //c'est ici que nous allons remplir notre card avec le texte/image de chaque SnowtamDecodeObject
     @Override
     public void onBindViewHolder(MyViewHolder myViewHolder, int position) {
         SnowtamDecodeObject myObject = list.get(position);
