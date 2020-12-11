@@ -1,15 +1,8 @@
-package standardclasses;
-
-import android.util.Log;
-import android.widget.TextView;
-
-import com.example.starsnow.R;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+package com.example.starsnow.model;
 
 import java.io.Serializable;
 
+//Classe Aeroport avec nom, latitude, longitude et un objet snowtam
 public class Aeroport implements Serializable {
     private String OACI;
     private String nom;

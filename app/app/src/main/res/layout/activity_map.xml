@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapActivity">
+    tools:context=".controller.MapActivity">
 
     <fragment
         android:id="@+id/fragment_map"
-        android:name="com.example.starsnow.MapFragment"
+        android:name="com.example.starsnow.controller.utility.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="-61dp"

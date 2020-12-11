@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".codeOACI">
+    tools:context=".controller.ResultActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/lato_bold"
-                android:text="Aéroport de Paris"
+                android:text="@string/loading"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +116,6 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
                     android:gravity="center"
-                    android:text="139.022725"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
@@ -128,7 +127,6 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/lato"
                     android:gravity="center"
-                    android:text="1.022725"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />

@@ -1,6 +1,6 @@
-package standardclasses;
+package com.example.starsnow.APIService;
 
-import org.json.JSONObject;
+import com.example.starsnow.model.Aeroport;
 
 public interface VolleyCallback2{
     void onSuccess(Aeroport results);

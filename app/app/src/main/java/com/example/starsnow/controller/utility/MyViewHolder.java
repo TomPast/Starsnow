@@ -1,11 +1,13 @@
-package com.example.starsnow;
+package com.example.starsnow.controller.utility;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
-import standardclasses.SnowtamDecodeObject;
+
+import com.example.starsnow.R;
+import com.example.starsnow.model.SnowtamDecodeObject;
 
 public class MyViewHolder extends RecyclerView.ViewHolder{
 

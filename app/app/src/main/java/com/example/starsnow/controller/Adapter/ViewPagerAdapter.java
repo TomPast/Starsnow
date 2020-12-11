@@ -1,19 +1,20 @@
-package Adapter;
+package com.example.starsnow.controller.Adapter;
 
-import android.content.res.Resources;
+import android.content.Context;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.starsnow.R;
-
-import fragments.FragmentOACICode;
-import fragments.FragmentOACIDecode;
+import com.example.starsnow.controller.fragments.FragmentOACICode;
+import com.example.starsnow.controller.fragments.FragmentOACIDecode;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter{
-    public ViewPagerAdapter(FragmentManager fm) {
+    private Context context;
+    public ViewPagerAdapter(FragmentManager fm, Context c) {
         super(fm);
+        context = c;
     }
     /**
      * Return fragment with respect to Position .
@@ -38,9 +39,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0 :
-                return "codé";
+                return context.getString(R.string.code);
             case 1 :
-                return "décodé";
+                return context.getString(R.string.decode);
         }
         return null;
     }

@@ -1,4 +1,4 @@
-package standardclasses;
+package com.example.starsnow.APIService;
 
 import org.json.JSONObject;
 

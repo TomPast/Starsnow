@@ -14,18 +14,20 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Starsnow">
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAk-ZlvVXawi7j2OqIdB-5PhfbqfzFCQiI"/>
-        <activity android:name=".Splashscreen">
+        <activity android:name=".controller.Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".codeOACI"></activity>
-        <activity android:name=".MapActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".controller.ResultActivity"></activity>
+        <activity android:name=".controller.MapActivity"></activity>
+        <activity android:name=".controller.MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

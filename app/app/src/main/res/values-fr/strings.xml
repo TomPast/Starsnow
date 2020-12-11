@@ -1,11 +1,40 @@
 <resources>
     <string name="app_name">Starsnow</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+
+    <string name="loading">Chargement...</string>
+
+    <!-- SPLASHSCREEN Strings -->
+    <string name="msg_splashscreen">Vous souhaite la bienvenue à bord</string>
+
+    <!-- SAISIE SNOWTAM Strings -->
+    <string name="instructions">Saisissez les codes OACI</string>
+    <string name="btn_valider">Rechercher</string>
+    <string name="rechercherCode">RECHERCHER</string>
+    <string name="logo_description">Logo</string>
+    <string name="aeroport_titre1">Aeroport 1</string>
+    <string name="code_aeroport1">KJFK</string>
+    <string name="ajoutAerop">Ajouter un nouvel aéroport</string>
+    <string name="titre_ajout">Nouvel Aéroport</string>
+    <string name="soustitre_ajout">Code OACI</string>
+    <string name="popup_error">Code Inconnu</string>
+
+    <!-- CodeOACI Strings -->
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="code">Codé</string>
+    <string name="decode">Décodé</string>
+    <string name="chargementSnowtam">Chargement du Snowtam...</string>
+    <string name="noSnowtam">Pas de snowtam</string>
+    <string name="APIProblem">Problème appel API</string>
+    <string name="codeOACIInvalide">Code OACI Non valide</string>
+
+
+    <!-- LOCALISATION Strings -->
     <string name="satellite">Satellite</string>
     <string name="normal">Normal</string>
     <string name="hybride">Hybride</string>
 
+    <!-- SNOWTAM DÉCODÉ Strings -->
     <string name="month01">" Janvier"</string>
     <string name="month02">" Fevrier"</string>
     <string name="month03">" Mars"</string>
@@ -95,23 +124,4 @@
     <string name="next_obs">"Prochaine observation prévue pour le "</string>
 
     <string name="notes">"Remarque(s) : "</string>
-
-    <string name="instructions">Saisissez les codes IACO</string>
-    <string name="btn_valider">Rechercher</string>
-    <string name="logo_description">Logo</string>
-    <string name="aeroport_titre1">Aeroport 1</string>
-    <string name="code_aeroport1">KJFK</string>
-    <string name="ajoutAerop">Ajouter un nouvel aéroport</string>
-    <string name="titre_ajout">Nouvel Aéroport</string>
-    <string name="soustitre_ajout">Code IACO</string>
-    <string name="latitude">Latitude</string>
-    <string name="longitude">Longitude</string>
-    <string name="code">Codé</string>
-    <string name="decode">Décodé</string>
-    <string name="chargementSnowtam">Chargement du Snowtam...</string>
-    <string name="noSnowtam">Pas de snowtam</string>
-    <string name="APIProblem">Problème appel API</string>
-    <string name="rechercherCode">RECHERCHER</string>
-    <string name="msg_splashscreen">Vous souhaite la bienvenue à bord</string>
-    <string name="popup_error">Code Inconnu</string>
 </resources>

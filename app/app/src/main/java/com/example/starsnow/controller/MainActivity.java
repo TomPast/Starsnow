@@ -1,4 +1,4 @@
-package com.example.starsnow;
+package com.example.starsnow.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.starsnow.controller.utility.GenericTextWatcher;
+import com.example.starsnow.R;
+
 import java.util.ArrayList;
 
-import standardclasses.Aeroport;
-import standardclasses.IACO_APIService;
-import standardclasses.VolleyCallback2;
+import com.example.starsnow.model.Aeroport;
+import com.example.starsnow.APIService.IACO_APIService;
+import com.example.starsnow.APIService.VolleyCallback2;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
         // Init liste des codes qui sera envoyé dans la prochaine activité
         codes = new ArrayList();
 
-        // Recupere l'id des elements graphiques
+        // Recupère l'id des elements graphiques
         cardAerop1 = findViewById(R.id.card_aerop1);
         cardAerop2 = findViewById(R.id.card_aerop2);
         cardAerop3 = findViewById(R.id.card_aerop3);
@@ -218,7 +221,7 @@ public class MainActivity extends AppCompatActivity{
     View.OnClickListener handlerValider = new View.OnClickListener() {
         public void onClick(View v) {
             Log.d("MSG",codes.toString());
-            Intent codeOACI = new Intent(MainActivity.this, codeOACI.class);
+            Intent codeOACI = new Intent(MainActivity.this, ResultActivity.class);
             codeOACI.putExtra("codes",codes);
             startActivity(codeOACI);
         }

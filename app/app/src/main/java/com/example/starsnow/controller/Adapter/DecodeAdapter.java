@@ -1,4 +1,4 @@
-package Adapter;
+package com.example.starsnow.controller.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,12 +6,12 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.starsnow.MyViewHolder;
+import com.example.starsnow.controller.utility.MyViewHolder;
 import com.example.starsnow.R;
 
 import java.util.List;
 
-import standardclasses.SnowtamDecodeObject;
+import com.example.starsnow.model.SnowtamDecodeObject;
 
 public class DecodeAdapter extends RecyclerView.Adapter<MyViewHolder>{
 

@@ -1,12 +1,12 @@
-package com.example.starsnow;
+package com.example.starsnow.controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.starsnow.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -14,7 +14,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import standardclasses.Aeroport;
+import com.example.starsnow.model.Aeroport;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -57,7 +57,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     public void onMapReady(GoogleMap gMap) {
         this.googleMap = gMap;
 
-        LatLng Airport = new LatLng(aeroport.getLongitude(), aeroport.getLatitude());
+        LatLng Airport = new LatLng(aeroport.getLatitude(), aeroport.getLongitude());
         googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         this.googleMap.addMarker(new MarkerOptions().position(Airport).title(aeroport.getNom()));
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Airport,14));
