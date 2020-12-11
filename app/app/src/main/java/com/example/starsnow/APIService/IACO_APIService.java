@@ -56,16 +56,13 @@ public class IACO_APIService extends Application {
                 });
         this.queue.add(stringRequest);
     }
-
     //Appel API pour récupérer le nom, la longitude et la latitude à partir du code OACI
     public void getAeroport(String OACI, final VolleyCallback2 callback){
         String url = "https://applications.icao.int/dataservices/api/indicators-list?api_key="+API_KEY+"&state=&airports="+OACI+"&format=json";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 response -> {
-
                     if(response.length() > 2){
                         try {
-
                             JSONArray responseJSON = new JSONArray(response);
                             JSONObject aeroportEntry = responseJSON.getJSONObject(0);
                             String aeroportName = aeroportEntry.getString("airportName");
@@ -87,4 +84,3 @@ public class IACO_APIService extends Application {
         this.queue.add(stringRequest);
     }
 }
-
