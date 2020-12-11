@@ -38,7 +38,6 @@ public class ResultActivity extends AppCompatActivity {
     private TextView Longitude;
     private TextView Latitude;
 
-
     private Aeroport currentAeroport;
     private Aeroport[] AeroportList;
     int currentIndex;
